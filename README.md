@@ -1,16 +1,36 @@
 .vim
 ====
 
-My vim dot files. the `.vimrc` file is saved to [vimrc](https://github.com/jessfraz/.vim/blob/master/vimrc).
+My vim dot files. the `.vimrc` file is saved to [vimrc](https://github.com/alexhokl/.vim/blob/master/vimrc).
 
 Just run the following commands via terminal to get perfectly set up:
 
-```console
-$ cd ~/
-$ git clone --recursive https://github.com/jessfraz/.vim.git .vim
-$ ln -sf $HOME/.vim/vimrc $HOME/.vimrc
-$ cd $HOME/.vim
-$ git submodule update --init
+```sh
+curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/bin/nvim
+pip install setuptools
+pip install --upgrade neovim
+pip3 install --upgrade neovim
+cd $HOME
+git clone --recursive https://github.com/alexhokl/.vim.git .vim
+cd $HOME/.vim
+git submodule update --init
+make install
+```
+
+Open nvim and execute the following commands
+
+```
+:UpdateRemotePlugins
+:GoInstallBinaries
+:OmniSharpInstall
+```
+
+To update the plugins (submodules)
+
+```sh
+make update-plugins
 ```
 
 ## Pathogen
@@ -32,6 +52,13 @@ update-plugins                 Updates all plugins.
 update                         Updates pathogen and all plugins.
 ```
 
+
+##### To add a new plugin
+
+```sh
+git submodule add https://github.com/OmniSharp/omnisharp-vim ~/.vim/bundle/omnisharp-vim
+```
+
 ## Plugins Used
 
 * [Dockerfile](https://github.com/docker/docker/tree/master/contrib/syntax/vim)
@@ -43,8 +70,12 @@ update                         Updates pathogen and all plugins.
 * [github.com/scrooloose/nerdtree](https://github.com/scrooloose/nerdtree.git)
 * [github.com/Xuyuanp/nerdtree-plugin.git](https://github.com/Xuyuanp/nerdtree-git-plugin.git)
 * [github.com/chr4/nginx.vim](https://github.com/chr4/nginx.vim.git)
+* [github.com/OmniSharp/omnisharp-vim](https://github.com/OmniSharp/omnisharp-vim)
 * [github.com/rust-lang/rust.vim](https://github.com/rust-lang/rust.vim.git)
+* [github.com/vim-syntastic/syntastic](https://github.com/vim-syntastic/syntastic.git)
 * [github.com/godlygeek/tabular](https://github.com/godlygeek/tabular.git)
+* [github.com/Quramy/tsuquyomi](https://github.com/Quramy/tsuquyomi.git)
+* [github.com/leafgarland/typescript-vim](https://github.com/leafgarland/typescript-vim)
 * [github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline.git)
 * [github.com/vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes.git)
 * [github.com/moll/vim-bbye](https://github.com/moll/vim-bbye.git)
@@ -52,6 +83,7 @@ update                         Updates pathogen and all plugins.
 * [github.com/ap/vim-buftabline](https://github.com/ap/vim-buftabline.git)
 * [github.com/crosbymichael/vim-cfmt](https://github.com/crosbymichael/vim-cfmt)
 * [github.com/altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized.git)
+* [github.com/tpope/vim-dispatch](https://github.com/tpope/vim-dispatch)
 * [github.com/tpope/vim-endwise](https://github.com/tpope/vim-endwise.git)
 * [github.com/tpope/vim-five.git](https://github.com/tpope/vim-fugitive.git)
 * [github.com/tpope/vim.git](https://github.com/tpope/vim-git.git)
@@ -71,3 +103,4 @@ update                         Updates pathogen and all plugins.
 * [github.com/hashivim/vim-terraform](https://github.com/hashivim/vim-terraform.git)
 * [github.com/cespare/vim-toml](https://github.com/cespare/vim-toml.git)
 * [github.com/stephpy/vim-yaml](https://github.com/stephpy/vim-yaml.git)
+* [github.com/Shougo/vimproc.vim](https://github.com/Shougo/vimproc.vim.git)
