@@ -1,7 +1,7 @@
 .vim
 ====
 
-My vim dot files. the `.vimrc` file is saved to [vimrc](https://github.com/jessfraz/.vim/blob/master/vimrc).
+My vim dot files. the `.vimrc` file is saved to [vimrc](https://github.com/alexhokl/.vim/blob/master/vimrc).
 
 **Table of Contents**
 
@@ -22,12 +22,33 @@ My vim dot files. the `.vimrc` file is saved to [vimrc](https://github.com/jessf
 
 Just run the following commands via terminal to get perfectly set up:
 
-```console
-$ cd ~/
-$ git clone --recursive https://github.com/jessfraz/.vim.git .vim
-$ ln -sf $HOME/.vim/vimrc $HOME/.vimrc
-$ cd $HOME/.vim
-$ git submodule update --init
+Note: Make sure that python 3.6.1 or above is installed.
+
+```sh
+curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/bin/nvim
+pip install setuptools
+pip install --upgrade pynvim
+pip3 install --upgrade pynvim
+cd $HOME
+git clone --recursive https://github.com/alexhokl/.vim.git .vim
+cd $HOME/.vim
+make install
+```
+
+Open nvim and execute the following commands
+
+```
+:UpdateRemotePlugins
+:GoInstallBinaries
+:OmniSharpInstall
+```
+
+To update the plugins (submodules)
+
+```sh
+make update-plugins
 ```
 
 ### Pathogen
@@ -53,16 +74,30 @@ update                         Updates pathogen and all plugins.
 
 ## Plugins Used
 
+
+##### To add a new plugin
+
+```sh
+git submodule add https://github.com/OmniSharp/omnisharp-vim ~/.vim/bundle/omnisharp-vim
+```
+
 * [Dockerfile](https://github.com/docker/docker/tree/master/contrib/syntax/vim)
+* [github.com/w0rp/ale](https://github.com/w0rp/ale)
 * [github.com/neoclide/coc.nvim](https://github.com/neoclide/coc.nvim.git)
 * [github.com/ctrlpvim/ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim.git)
+* [github.com/dart-lang/dart-vim-plugin](https://github.com/dart-lang/dart-vim-plugin)
 * [github.com/Raimondi/delimitMate](https://github.com/Raimondi/delimitMate.git)
 * [github.com/vivien/vim-linux-coding-style](https://github.com/vivien/vim-linux-coding-style.git)
 * [github.com/scrooloose/nerdtree](https://github.com/scrooloose/nerdtree.git)
 * [github.com/Xuyuanp/nerdtree-plugin.git](https://github.com/Xuyuanp/nerdtree-git-plugin.git)
 * [github.com/chr4/nginx.vim](https://github.com/chr4/nginx.vim.git)
+* [github.com/OmniSharp/omnisharp-vim](https://github.com/OmniSharp/omnisharp-vim)
 * [github.com/rust-lang/rust.vim](https://github.com/rust-lang/rust.vim.git)
 * [github.com/godlygeek/tabular](https://github.com/godlygeek/tabular.git)
+* [github.com/tomtom/tcomment_vim](https://github.com/tomtom/tcomment_vim)
+* [github.com/tomtom/tlib_vim](https://github.com/tomtom/tlib_vim)
+* [github.com/SirVer/ultisnips](https://github.com/SirVer/ultisnips)
+* [github.com/MarcWeber/vim-addon-mw-utils](https://github.com/MarcWeber/vim-addon-mw-utils)
 * [github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline.git)
 * [github.com/vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes.git)
 * [github.com/moll/vim-bbye](https://github.com/moll/vim-bbye.git)
@@ -83,10 +118,15 @@ update                         Updates pathogen and all plugins.
 * [github.com/terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors.git)
 * [github.com/uarun/vim-protobuf](https://github.com/uarun/vim-protobuf.git)
 * [github.com/hynek/vim-python-pep8-indent](https://github.com/hynek/vim-python-pep8-indent.git)
+* [github.com/tpope/vim-rhubarb](https://github.com/tpope/vim-rhubarb)
 * [github.com/mhinz/vim-sayonara](https://github.com/mhinz/vim-sayonara.git)
 * [github.com/tpope/vim-sensible](https://github.com/tpope/vim-sensible.git)
+* [github.com/garbas/vim-snipmate](https://github.com/garbas/vim-snipmate)
+* [github.com/honza/vim-snippets](https://github.com/honza/vim-snippets)
 * [github.com/tpope/vim-surround](https://github.com/tpope/vim-surround.git)
 * [github.com/wgwoods/vim-systemd-syntax](https://github.com/wgwoods/vim-systemd-syntax.git)
 * [github.com/hashivim/vim-terraform](https://github.com/hashivim/vim-terraform.git)
 * [github.com/cespare/vim-toml](https://github.com/cespare/vim-toml.git)
+* [github.com/tpope/vim-unimpaired](https://github.com/tpope/vim-unimpaired)
 * [github.com/stephpy/vim-yaml](https://github.com/stephpy/vim-yaml.git)
+
