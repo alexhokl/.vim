@@ -1,0 +1,52 @@
+-- nomnivore/ollama.nvim
+local ollama = require("ollama")
+ollama.setup()
+
+-- meeehdi-dev/bropilot.nvim
+-- commented out to avoid enabling it by default
+-- local bropilot = require("bropilot")
+-- bropilot.setup({
+-- 	model = "codellama:7b-code",
+-- 	model_params = {
+-- 		-- to avoid long completions which takes forever
+-- 		num_predict = 20,
+-- 	},
+-- 	keymap = {
+-- 		suggest = "<leader>i",
+-- 		accept_block = "<leader>u",
+-- 	},
+-- })
+
+-- yetone/avante.nvim
+-- local avante = require("avante")
+-- avante.setup({
+-- 	provider = "ollama",
+-- 	vendors = {
+-- 		["ollama"] = {
+-- 			["local"] = true,
+-- 			endpoint = "127.0.0.1:11434/v1",
+-- 			model = "codellama:7b-code",
+-- 			parse_curl_args = function(opts, code_opts)
+-- 				return {
+-- 					url = opts.endpoint .. "/chat/completions",
+-- 					headers = {
+-- 					["Accept"] = "application/json",
+-- 					["Content-Type"] = "application/json",
+-- 					},
+-- 					body = {
+-- 						model = opts.model,
+-- 						messages = {
+-- 							{ role = "system", content = code_opts.system_prompt },
+-- 							{ role = "user", content = require("avante.providers.openai").get_user_message(code_opts) },
+-- 						},
+-- 						max_tokens = 2048,
+-- 						stream = true,
+-- 					},
+-- 				}
+-- 			end,
+-- 			parse_response_data = function(data_stream, event_state, opts)
+-- 				require("avante.providers").openai.parse_response(data_stream, event_state, opts)
+-- 			end,
+-- 		},
+-- 	},
+-- })
