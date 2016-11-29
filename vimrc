@@ -3,7 +3,7 @@ execute pathogen#infect()
 call pathogen#helptags()
 
 set nocompatible              " be iMproved, required
-set nofoldenable              " disable folding
+"set nofoldenable              " disable folding
 filetype off                  " required
 
 " Enable file type detection.
@@ -12,6 +12,7 @@ filetype off                  " required
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
 
+set pyx=3
 "
 " Settings
 "
@@ -66,7 +67,7 @@ set textwidth=80
 set formatoptions=qrn1
 
 " Do not use relative numbers to where the cursor is.
-set norelativenumber
+set relativenumber
 
 " Apply the indentation of the current line to the next line.
 set autoindent
@@ -75,8 +76,8 @@ set complete-=i
 set showmatch
 set smarttab
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 set nrformats-=octal
@@ -96,7 +97,17 @@ set signcolumn=yes
 
 " Better Completion
 set complete=.,w,b,u,t
-set completeopt=longest,menuone
+set completeopt=longest,menuone,preview
+
+" show spaces and tab characters
+set list
+set listchars=tab:▸\ ,trail:·
+
+set clipboard+=unnamedplus
+set undofile
+set suffixesadd=.cs,.csproj,.go,.md
+set inccommand=nosplit
+set spelllang=en_gb
 
 if &history < 1000
   set history=50
@@ -111,7 +122,7 @@ if !empty(&viminfo)
 endif
 
 if !&scrolloff
-  set scrolloff=1
+  set scrolloff=3
 endif
 if !&sidescrolloff
   set sidescrolloff=5
@@ -166,9 +177,9 @@ if has('nvim')
   colorscheme tokyonight
 else
   set background=dark
-  let g:solarized_termcolors=256
-  let g:solarized_termtrans=1
-  colorscheme solarized
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans=1
+" colorscheme solarized
 endif
 
 set guifont=Inconsolata:h15
@@ -181,12 +192,12 @@ let g:mapleader = ","
 " ============================= vim-which-key ============================
 " Setup WhichKey here for our leader.
 " TODO: figure out why the timeout doesn't work
-nnoremap <silent> <leader> :<c-u>WhichKey ','<CR>
-call which_key#register(',', "g:which_key_map")
+" nnoremap <silent> <leader> :<c-u>WhichKey ','<CR>
+" call which_key#register(',', "g:which_key_map")
 " Define prefix dictionary
-let g:which_key_map =  {}
-nnoremap <leader>? :WhichKey ','<CR>
-let g:which_key_map['?'] = 'show help'
+" let g:which_key_map =  {}
+" nnoremap <leader>? :WhichKey ','<CR>
+" let g:which_key_map['?'] = 'show help'
 
 " This trigger takes advantage of the fact that the quickfix window can be
 " easily distinguished by its file-type, qf. The wincmd J command is
@@ -224,12 +235,12 @@ endfunction
 command! Ball :call DeleteInactiveBufs()
 
 " Close quickfix easily
-nnoremap <leader>a :cclose<CR>
-let g:which_key_map.a = 'close quickfix'
+" nnoremap <leader>a :cclose<CR>
+"let g:which_key_map.a = 'close quickfix'
 
 " Remove search highlight
 nnoremap <leader><space> :nohlsearch<CR>
-let g:which_key_map['<space>'] = 'remove search highlight'
+" let g:which_key_map['<space>'] = 'remove search highlight'
 
 function! InsertDate()
   " Get the position of the cursor, if it is the start of the file we want
@@ -248,8 +259,8 @@ function! InsertDate()
 endfunction
 
 " Add a date timestamp between two new lines.
-nnoremap <leader>d :call InsertDate()<CR>
-let g:which_key_map.d = 'insert date'
+" nnoremap <leader>d :call InsertDate()<CR>
+"let g:which_key_map.d = 'insert date'
 
 " Buffer prev/next
 nnoremap <C-x> :bnext<CR>
@@ -263,37 +274,67 @@ map <C-l> <C-W>l
 
 " Fast saving
 nmap <leader>w :w!<cr>
-let g:which_key_map.w = 'save'
+" let g:which_key_map.w = 'save'
 
 " Fresh vimrc
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Center the screen
-nnoremap <space> zz
+" nnoremap <space> zz
 
 " Move up and down on splitted lines (on small width screens)
-map <Up> gk
-map <Down> gj
-map k gk
-map j gj
+" map <Up> gk
+" map <Down> gj
+" map k gk
+" map j gj
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" resize buffer
+noremap <silent> <leader><Up> :resize +5<cr>
+noremap <silent> <leader><Down> :resize -5<cr>
+noremap <silent> <leader><Left> :vertical resize -5<cr>
+noremap <silent> <leader><Right> :vertical resize +5<cr>
+
+noremap <PageUp> <NOP>
+noremap <PageDown> <NOP>
+inoremap <PageUp> <NOP>
+inoremap <PageDown> <NOP>
+
 
 " Just go out in insert mode
 imap jk <ESC>l
+
+" move visually selected blocks
+xnoremap ]e :move '>+1<CR>gv-gv
+xnoremap [e :move '<-2<CR>gv-gv
 
 " spell check
 nnoremap <F6> :setlocal spell! spell?<CR>
 
 " disable the recording macro, drives me nuts.
-map q <Nop>
+" map q <Nop>
+" disable Q to go into ex-mode
+nnoremap Q <NOP>
+
+nnoremap <leader>q :Sayonara<CR>
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
+" change default behaviour of * and #
+nmap <silent> * :let @/='\v<'.expand('<cword>').'>'<CR>:let v:searchforward=1<cr>n
+nmap <silent> # :let @/='\v<'.expand('<cword>').'>'<CR>:let v:searchforward=0<cr>n
+
+" nnoremap <leader>e :exe getline(line('.'))<cr>
+
 " Set the path to where the current file is.
-nnoremap <leader>. :lcd %:p:h<CR>
-let g:which_key_map['.'] = 'set path as current file'
+" nnoremap <leader>. :lcd %:p:h<CR>
+" let g:which_key_map['.'] = 'set path as current file'
 
 " When we open vim try and find the project root based on .git.
 function! FindGitRoot()
@@ -344,11 +385,11 @@ endfunction
 autocmd BufEnter * silent! FindGitRoot
 
 " Support for sessions, this needs to match the dashboard commands
-let g:which_key_map.s = { 'name' : '+session' }
+" let g:which_key_map.s = { 'name' : '+session' }
 nmap <Leader>ss :<C-u>SessionSave<CR>
-let g:which_key_map.s.s = 'session save'
+" let g:which_key_map.s.s = 'session save'
 nmap <Leader>sl :<C-u>SessionLoad<CR>
-let g:which_key_map.s.l = 'session load'
+" let g:which_key_map.s.l = 'session load'
 
 " Do not show stupid q: window
 map q: :q
@@ -388,7 +429,7 @@ endif
 
 au BufNewFile,BufRead *.vim setlocal noet ts=4 sw=4 sts=4
 au BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
-au BufNewFile,BufRead *.md setlocal spell noet ts=4 sw=4
+" au BufNewFile,BufRead *.md setlocal spell noet ts=4 sw=4
 au BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
 au BufNewFile,BufRead *.cpp setlocal expandtab ts=2 sw=2
 au BufNewFile,BufRead *.hpp setlocal expandtab ts=2 sw=2
@@ -399,6 +440,8 @@ augroup filetypedetect
   au BufNewFile,BufRead .tmux.conf*,tmux.conf* setf tmux
   au BufNewFile,BufRead .nginx.conf*,nginx.conf* setf nginx
   au BufNewFile,BufRead .jinja2* setf jinja
+  au BufNewFile,BufRead *.csx set filetype=cs
+  au BufNewFile,BufRead *.tfvars set filetype=terraform
 augroup END
 
 au FileType nginx setlocal noet ts=4 sw=4 sts=4
@@ -428,7 +471,7 @@ autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 te
 
 " For all text files set 'textwidth' to 80 characters.
 autocmd FileType text setlocal textwidth=80 fo+=2t ts=2 sw=2 sts=2 expandtab
-autocmd BufNewFile,BufRead *.md,*.txt,*.adoc setlocal textwidth=80 fo+=2t ts=2 sw=2 sts=2 expandtab
+autocmd BufNewFile,BufRead *.md,*.txt,*.adoc setlocal textwidth=80 fo+=2t ts=2 sw=2 sts=2 expandtab formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\|^\\s*[-*+]\\s+
 
 " toml settings
 au BufRead,BufNewFile MAINTAINERS,*.toml set ft=toml formatprg=toml-fmt
@@ -476,7 +519,7 @@ autocmd FileType gitcommit setlocal spell
 " Wildmenu completion {{{
 set wildmenu
 " set wildmode=list:longest
-set wildmode=list:full
+set wildmode=full
 
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
@@ -511,26 +554,28 @@ endif
 
 " ==================== telescope.nvim ====================
 if has('nvim')
-  let g:which_key_map.f = { 'name' : '+telescope find' }
-  nnoremap <leader>ff <cmd>Telescope find_files<CR>
-  let g:which_key_map.f.f = 'telescope find files'
-  nnoremap <leader>fg <cmd>Telescope live_grep<CR>
-  let g:which_key_map.f.g = 'telescope live grep'
-  nnoremap <leader>fb <cmd>Telescope buffers<CR>
-  let g:which_key_map.f.b = 'telescope buffers'
-  nnoremap <leader>fh <cmd>Telescope help_tags<CR>
-  let g:which_key_map.f.h = 'telescope help tags'
+  " let g:which_key_map.f = { 'name' : '+telescope find' }
+  " nnoremap <leader>ff <cmd>Telescope find_files<CR>
+  " let g:which_key_map.f.f = 'telescope find files'
+  " nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+  " let g:which_key_map.f.g = 'telescope live grep'
+  " nnoremap <leader>fb <cmd>Telescope buffers<CR>
+  " let g:which_key_map.f.b = 'telescope buffers'
+  " nnoremap <leader>fh <cmd>Telescope help_tags<CR>
+  " let g:which_key_map.f.h = 'telescope help tags'
 
   " Make Ctrl-p work for telescope since we know those keybindings so well.
-  nnoremap <C-p> <cmd>Telescope find_files<CR>
-  nnoremap <C-g> <cmd>Telescope live_grep<CR>
-  nnoremap <C-b> <cmd>Telescope git_branches<CR>
+  " nnoremap <C-p> <cmd>Telescope find_files<CR>
+  " nnoremap <C-g> <cmd>Telescope live_grep<CR>
+  " nnoremap <C-b> <cmd>Telescope git_branches<CR>
 
   if !executable('rg')
     echo "You might want to install ripgrep: https://github.com/BurntSushi/ripgrep#installation"
   endif
 
 lua << EOF
+local trouble = require('trouble.sources.telescope')
+local actions = require "telescope.actions"
 require('telescope').setup{
   defaults = {
     mappings = {
@@ -538,8 +583,13 @@ require('telescope').setup{
         -- map actions.which_key to ?
         -- actions.which_key shows the mappings for your picker,
         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
-        ["?"] = "which_key"
-      }
+        -- ["?"] = "which_key",
+        ["<c-t>"] = trouble.open
+      },
+      n = {
+        ["<c-t>"] = trouble.open,
+        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+      },
     },
     file_ignore_patterns = {
       "^.git/",
@@ -562,39 +612,51 @@ require('telescope').setup{
       },
   },
   extensions = {
+    ['ui-select'] = {
+    }
   }
 }
+require('telescope').load_extension('ui-select')
+require('telescope').load_extension('yaml_schema')
 EOF
 endif
 
 " =================== render-markdown =================
-if has('nvim')
-lua << EOF
-require('render-markdown').setup{
-  file_types = { 'markdown', 'Avante' },
-}
-vim.treesitter.language.register('markdown', 'Avante')
-EOF
-endif
+" if has('nvim')
+" lua << EOF
+" require('render-markdown').setup{
+"   file_types = { 'markdown', 'Avante' },
+" }
+" vim.treesitter.language.register('markdown', 'Avante')
+" EOF
+" endif
 
 " =================== avante.nvim ======================
 
 if has('nvim')
 lua << EOF
 require('avante_lib').load()
-require('avante').setup{}
+require('avante').setup{
+  provider = "ollama",
+  ollama = {
+    model = "gemma3:12b",
+  },
+  web_search_engine = {
+    provider = "searxng",
+  },
+}
 EOF
 endif
 
 " ==================== nvim-tree.lua ====================
-noremap <C-a> :NvimTreeToggle<CR>
+noremap <leader>n :NvimTreeToggle<CR>
 
-let g:which_key_map.n = { 'name' : '+file tree' }
-noremap <leader>nn :NvimTreeToggle<cr>
+" let g:which_key_map.n = { 'name' : '+file tree' }
+" noremap <leader>nn :NvimTreeToggle<cr>
 " find the current file in the tree
-let g:which_key_map.n.n = 'file tree toggle'
-noremap <leader>nf :NvimTreeFindFile<cr>
-let g:which_key_map.n.f = 'file tree find file'
+" let g:which_key_map.n.n = 'file tree toggle'
+" noremap <leader>n :NvimTreeFindFile<cr>
+" let g:which_key_map.n = 'file tree find file'
 
 if has('nvim')
 lua << EOF
@@ -726,7 +788,8 @@ lua << EOF
 require("bufferline").setup{
   options = {
     diagnostics = "nvim_lsp",
-    }
+    separator_style = "slant",
+  }
 }
 EOF
 endif
@@ -735,19 +798,21 @@ endif
 " Suggest using pinentry-touchid since it is the least shit option:
 " https://github.com/jorgelbg/pinentry-touchid
 " This is used when unlocking a gpg key for signing or ssh key for commits.
-let g:which_key_map.g = { 'name' : '+git' }
+" let g:which_key_map.g = { 'name' : '+git' }
 nnoremap <leader>ga :Git add %:p<CR><CR>
-let g:which_key_map.g.a = 'git add current file'
+" let g:which_key_map.g.a = 'git add current file'
 nnoremap <leader>gs :Git<CR>
-let g:which_key_map.g.s = 'git status'
-nnoremap <leader>gp :Git push<CR><CR>
-let g:which_key_map.g.p = 'git push'
+" let g:which_key_map.g.s = 'git status'
+" nnoremap <leader>gp :Git push<CR><CR>
+" let g:which_key_map.g.p = 'git push'
 nnoremap <leader>gb :Git blame<CR>
-let g:which_key_map.g.b = 'git blame'
-nnoremap <leader>gc :Git commit -sa<CR><CR>
-let g:which_key_map.g.c = 'git commit'
-nnoremap <leader>go :GBrowse<CR><CR>
-let g:which_key_map.g.o = 'open in GitHub'
+" let g:which_key_map.g.b = 'git blame'
+" nnoremap <leader>gc :Git commit -sa<CR><CR>
+" let g:which_key_map.g.c = 'git commit'
+nnoremap <leader>gw :GBrowse<CR><CR>
+" let g:which_key_map.g.w = 'open in GitHub'
+
+nnoremap <leader>gco :Gread<CR>
 
 " ==================== gitsigns.nvim ====================
 if has('nvim')
@@ -791,55 +856,62 @@ require('gitsigns').setup {
     row = 0,
     col = 1
   },
+  on_attach = function(bufnr)
+    local gitsigns = require('gitsigns')
+    local default_opts = { buffer = bufnr, noremap = true, silent = true }
+    vim.keymap.set('n', ']c', gitsigns.next_hunk, default_opts)
+    vim.keymap.set('n', '[c', gitsigns.prev_hunk, default_opts)
+    vim.keymap.set('n', '<leader>gd', gitsigns.preview_hunk, default_opts)
+  end,
 }
 EOF
 endif
 
 " ==================== vim-go ====================
-let g:go_fmt_fail_silently = 0
-let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
-let g:go_term_enabled = 1
-let g:go_snippet_engine = "neosnippet"
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
-let g:go_highlight_extra_types = 0
-let g:go_highlight_operators = 0
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_autosave = 1
+"let g:go_fmt_fail_silently = 0
+"let g:go_fmt_command = "goimports"
+"let g:go_autodetect_gopath = 1
+"let g:go_term_enabled = 1
+"let g:go_snippet_engine = "neosnippet"
+"let g:go_highlight_space_tab_error = 0
+"let g:go_highlight_array_whitespace_error = 0
+"let g:go_highlight_trailing_whitespace_error = 0
+"let g:go_highlight_extra_types = 0
+"let g:go_highlight_operators = 0
+"let g:go_highlight_build_constraints = 1
+"let g:go_fmt_autosave = 1
 
-au FileType go nmap <Leader>s <Plug>(go-def-split)
-au FileType go nmap <Leader>v <Plug>(go-def-vertical)
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>l <Plug>(go-metalinter)
+"au FileType go nmap <Leader>s <Plug>(go-def-split)
+"au FileType go nmap <Leader>v <Plug>(go-def-vertical)
+"au FileType go nmap <Leader>i <Plug>(go-info)
+"au FileType go nmap <Leader>l <Plug>(go-metalinter)
 
-au FileType go nmap <leader>r  <Plug>(go-run)
+"au FileType go nmap <leader>r  <Plug>(go-run)
 
-au FileType go nmap <leader>b  <Plug>(go-build)
-au FileType go nmap <leader>t  <Plug>(go-test)
-au FileType go nmap <leader>dt  <Plug>(go-test-compile)
-au FileType go nmap <Leader>d <Plug>(go-doc)
+"au FileType go nmap <leader>b  <Plug>(go-build)
+"au FileType go nmap <leader>t  <Plug>(go-test)
+"au FileType go nmap <leader>dt  <Plug>(go-test-compile)
+"au FileType go nmap <Leader>d <Plug>(go-doc)
 
-au FileType go nmap <Leader>e <Plug>(go-rename)
+"au FileType go nmap <Leader>e <Plug>(go-rename)
 
 " neovim specific
-if has('nvim')
-  au FileType go nmap <leader>rt <Plug>(go-run-tab)
-  au FileType go nmap <Leader>rs <Plug>(go-run-split)
-  au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
-endif
+"if has('nvim')
+"  au FileType go nmap <leader>rt <Plug>(go-run-tab)
+"  au FileType go nmap <Leader>rs <Plug>(go-run-split)
+"  au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
+"endif
 
 " I like these more!
-augroup go
-  autocmd!
-  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-augroup END
+"augroup go
+"  autocmd!
+"  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+"  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+"  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+"augroup END
 
 " ==================== vim-json ====================
-let g:vim_json_syntax_conceal = 0
+" let g:vim_json_syntax_conceal = 0
 
 " ========= vim-better-whitespace ==================
 " do not highlight the whitespace
@@ -847,28 +919,28 @@ let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
 " auto strip whitespace except for file with extention blacklisted
-let g:better_whitespace_filetypes_blacklist = ['diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive', 'rust']
+let g:better_whitespace_filetypes_blacklist = ['diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'fugitive', 'rust']
 
-" ========= vim-markdown ==================
-" disable folding
-let g:vim_markdown_folding_disabled = 1
-
-" Allow for the TOC window to auto-fit when it's possible for it to shrink.
-" It never increases its default size (half screen), it only shrinks.
-let g:vim_markdown_toc_autofit = 1
-
-" Disable conceal
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-
-" Allow the ge command to follow named anchors in links of the form
-" file#anchor or just #anchor, where file may omit the .md extension as usual
-let g:vim_markdown_follow_anchor = 1
-
-" highlight frontmatter
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_toml_frontmatter = 1
-let g:vim_markdown_json_frontmatter = 1
+" " ========= vim-markdown ==================
+" " disable folding
+" let g:vim_markdown_folding_disabled = 0
+"
+" " Allow for the TOC window to auto-fit when it's possible for it to shrink.
+" " It never increases its default size (half screen), it only shrinks.
+" let g:vim_markdown_toc_autofit = 1
+"
+" " Disable conceal
+" let g:vim_markdown_conceal = 0
+" let g:vim_markdown_conceal_code_blocks = 0
+"
+" " Allow the ge command to follow named anchors in links of the form
+" " file#anchor or just #anchor, where file may omit the .md extension as usual
+" let g:vim_markdown_follow_anchor = 1
+"
+" " highlight frontmatter
+" let g:vim_markdown_frontmatter = 1
+" let g:vim_markdown_toml_frontmatter = 1
+" let g:vim_markdown_json_frontmatter = 1
 
 " =================== lualine.nvim ========================
 if has('nvim')
@@ -876,14 +948,42 @@ lua << EOF
 require('lualine').setup{
   options = {
     theme = 'tokyonight'
-    }
+  },
+  sections = {
+    lualine_b = {'branch', 'diff', 'lsp_status', 'diagnostics'},
+    lualine_c = {
+      {
+          function()
+              local cur_buf = vim.api.nvim_get_current_buf()
+              return require("hbac.state").is_pinned(cur_buf) and "📍" or ""
+              -- tip: nerd fonts have pinned/unpinned icons!
+          end,
+          color = { fg = "#ef5f6b", gui = "bold" },
+      }
+    },
+    lualine_x = {
+      {
+        'encoding',
+        show_bomb = true,
+      },
+      'fileformat',
+      'filetype',
+    },
+  },
+  extensions = {
+    'quickfix',
+    'fugitive',
+    'mason',
+    'oil',
+    'trouble',
   }
+}
 EOF
 endif
 
 " =================== rust.vim ========================
 " Enable automatic running of :RustFmt when a buffer is saved.
-let g:rustfmt_autosave = 1
+" let g:rustfmt_autosave = 1
 let g:rustfmt_autosave_if_config_present = 1
 
 " The :RustPlay command will send the current selection, or if nothing is
@@ -898,10 +998,10 @@ endif
 " =================== vim-terraform ========================
 
 " Allow vim-terraform to override your .vimrc indentation syntax for matching files.
-let g:terraform_align=1
+"let g:terraform_align=1
 
 " Run terraform fmt on save.
-let g:terraform_fmt_on_save=1
+" let g:terraform_fmt_on_save=1
 
 
 " =================== vim-hclfmt ========================
@@ -916,25 +1016,25 @@ hi def CopilotSuggestion guifg=#808080 ctermfg=244
 
 " =================== nvim-lspconfig ========================
 
-if has('nvim-0.5')
+" if has('nvim-0.5')
 
 " =================== clangd ========================
-if executable('clangd')
-lua << EOF
-require'lspconfig'.clangd.setup{}
-EOF
-else
-  echo "You might want to install clangd: https://clangd.llvm.org/installation.html"
-endif
+" if executable('clangd')
+" lua << EOF
+" require'lspconfig'.clangd.setup{}
+" EOF
+" else
+"   echo "You might want to install clangd: https://clangd.llvm.org/installation.html"
+" endif
 
 " =================== gopls ========================
-if executable('gopls')
-lua << EOF
-require'lspconfig'.gopls.setup{}
-EOF
-else
-  echo "You might want to install gopls: https://github.com/golang/tools/tree/master/gopls"
-endif
+" if executable('gopls')
+" lua << EOF
+" require'lspconfig'.gopls.setup{}
+" EOF
+" else
+"   echo "You might want to install gopls: https://github.com/golang/tools/tree/master/gopls"
+" endif
 
 " =================== kcl-lsp ========================
 if executable('kcl-language-server')
@@ -977,126 +1077,124 @@ else
 endif
 
 " =================== rust-analyzer ========================
-if executable('rust-analyzer')
-lua << EOF
-local nvim_lsp = require'lspconfig'
-
-nvim_lsp.rust_analyzer.setup({
-  -- on_attach is a callback called when the language server attachs to the buffer
-  -- on_attach = on_attach,
-  settings = {
-    -- config from: https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-    ["rust-analyzer"] = {
-      -- enable clippy diagnostics on save
-      checkOnSave = {
-        command = "clippy"
-      },
-    }
-  }
-})
-EOF
-else
-  echo "You might want to install rust-analyzer: https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary"
-endif
-
-endif
+" if executable('rust-analyzer')
+" lua << EOF
+" local nvim_lsp = require'lspconfig'
+"
+" nvim_lsp.rust_analyzer.setup({
+"   -- on_attach is a callback called when the language server attachs to the buffer
+"   -- on_attach = on_attach,
+"   settings = {
+"     -- config from: https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+"     ["rust-analyzer"] = {
+"       -- enable clippy diagnostics on save
+"       checkOnSave = {
+"         command = "clippy"
+"       },
+"     }
+"   }
+" })
+" EOF
+" else
+"   echo "You might want to install rust-analyzer: https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary"
+" endif
+"
+" endif
 
 " =================== tsserver ========================
-if executable('tsserver')
-lua << EOF
-require'lspconfig'.ts_ls.setup{}
-EOF
-else
-  echo "You might want to install tsserver: yarn global add typescript typescript-language-server"
-endif
+" if executable('tsserver')
+" lua << EOF
+" require'lspconfig'.ts_ls.setup{}
+" EOF
+" else
+"   echo "You might want to install tsserver: yarn global add typescript typescript-language-server"
+" endif
 
 " =================== nixd ========================
-if executable('nixd')
-lua << EOF
-require'lspconfig'.nixd.setup{}
-EOF
-else
-  echo "You might want to install nixd: https://github.com/nix-community/nixd"
-endif
+" if executable('nixd')
+" lua << EOF
+" require'lspconfig'.nixd.setup{}
+" EOF
+" else
+"   echo "You might want to install nixd: https://github.com/nix-community/nixd"
+" endif
 
 " =================== nvim-cmp ========================
 
-if has('nvim-0.5')
-
-lua << EOF
--- Add additional capabilities supported by nvim-cmp
-local nvim_lsp = require'lspconfig'
-local cmp = require'cmp'
-
-cmp.setup ({
-  snippet = {
-    -- Enable LSP snippets
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
-  mapping = {
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
-    ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
-  },
-  -- Installed sources
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-    { name = 'path' },
-    { name = 'buffer' },
-    { name = 'spell' },
-    { name = 'git' },
-  },
-})
-
-
-vim.opt.spelllang = { 'en_us' }
-
-require("cmp_git").setup({
-    -- defaults
-    filetypes = { "gitcommit" },
-    remotes = { "upstream", "origin" }, -- in order of most to least prioritized
-})
-
--- Setup lspconfig.
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'kcl_lsp', 'rust_analyzer', 'ts_ls' }
-for _, lsp in ipairs(servers) do
-  if not nvim_lsp[lsp] then
-    nvim_lsp[lsp].setup {
-      -- on_attach = my_custom_on_attach,
-      capabilities = capabilities,
-    }
-  end
-end
-
-EOF
-
-endif
+" if has('nvim-0.5')
+"
+" lua << EOF
+" -- Add additional capabilities supported by nvim-cmp
+" local nvim_lsp = require'lspconfig'
+" local cmp = require'cmp'
+"
+" cmp.setup ({
+"   snippet = {
+"     -- Enable LSP snippets
+"     -- REQUIRED - you must specify a snippet engine
+"     expand = function(args)
+"       vim.fn["vsnip#anonymous"](args.body)
+"     end,
+"   },
+"   mapping = {
+"     ['<C-Space>'] = cmp.mapping.complete(),
+"     ['<C-e>'] = cmp.mapping.close(),
+"     ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+"     ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+"     ['<CR>'] = cmp.mapping.confirm({
+"       behavior = cmp.ConfirmBehavior.Replace,
+"       select = true,
+"     }),
+"   },
+"   -- Installed sources
+"   sources = {
+"     { name = 'nvim_lsp' },
+"     { name = 'vsnip' },
+"     { name = 'path' },
+"     { name = 'buffer' },
+"     { name = 'spell' },
+"     { name = 'git' },
+"   },
+" })
+"
+"
+" vim.opt.spelllang = { 'en_us' }
+"
+" require("cmp_git").setup({
+"     -- defaults
+"     filetypes = { "gitcommit" },
+"     remotes = { "upstream", "origin" }, -- in order of most to least prioritized
+" })
+"
+" -- Setup lspconfig.
+" local capabilities = vim.lsp.protocol.make_client_capabilities()
+" capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+" -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+" local servers = { 'clangd', 'kcl_lsp', 'rust_analyzer', 'ts_ls' }
+" for _, lsp in ipairs(servers) do
+"  if not nvim_lsp[lsp] then
+"    nvim_lsp[lsp].setup {
+"      -- on_attach = my_custom_on_attach,
+"      capabilities = capabilities,
+"    }
+"  end
+" EOF
+"
+" endif
 
 " =================== lspsaga.nvim =========================
 if has('nvim')
 " lsp provider to find the cursor word definition and reference
-nnoremap <silent> gh :Lspsaga lsp_finder<CR>
+" nnoremap <silent> gr :Telescope lsp_references<CR>
 
-" preview definition
-nnoremap <silent> gd :Lspsaga preview_definition<CR>
+" " preview definition
+" nnoremap <silent> gd :Lspsaga preview_definition<CR>
 
 " rename
-nnoremap <silent> gr :Lspsaga rename<CR>
+" nnoremap <silent> <leader>rn :Lspsaga rename<CR>
 
 " show signature help
-nnoremap <silent> gs :Lspsaga signature_help<CR>
+nnoremap <silent><leader>k :Lspsaga signature_help<CR>
 
 " show hover doc
 nnoremap <silent>K :Lspsaga hover_doc<CR>
@@ -1106,15 +1204,17 @@ nnoremap <silent>K :Lspsaga hover_doc<CR>
 " nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 
 " code action
-nnoremap <silent><leader>ca :Lspsaga code_action<CR>
-vnoremap <silent><leader>ca :Lspsaga range_code_action<CR>
+" nnoremap <silent><leader>ca :Lspsaga code_action<CR>
+" vnoremap <silent><leader>ca :Lspsaga range_code_action<CR>
 
-" float terminal also you can pass the cli command in open_float_terminal function
-nnoremap <silent> <C-t> :Lspsaga open_floaterm<CR>
-tnoremap <silent> <C-t> <C-\><C-n>:Lspsaga close_floaterm<CR>
+" " float terminal also you can pass the cli command in open_float_terminal function
+" nnoremap <silent> <C-t> :Lspsaga open_floaterm<CR>
+" tnoremap <silent> <C-t> <C-\><C-n>:Lspsaga close_floaterm<CR>
 
 " diagnostics
-nnoremap <silent><leader>cd :Lspsaga show_line_diagnostics<CR>
+nnoremap <silent><leader>le :Lspsaga show_line_diagnostics<CR>
+nnoremap <silent>[d <cmd>Lspsaga diagnostic_jump_prev<CR>
+nnoremap <silent>]d <cmd>Lspsaga diagnostic_jump_next<CR>
 
 " TODO fix why this plugin errors when opening a gitcommit file.
 lua << EOF
@@ -1198,7 +1298,18 @@ endif
 " =================== indent-blankline.nvim ========================
 if has('nvim')
 lua << EOF
-require("ibl").setup()
+require("ibl").setup {
+  scope = {
+    char = "|",
+    show_start = false,
+    show_end = false,
+  },
+  exclude = {
+    buftypes = {"terminal"},
+    filetypes = {"dashboard"},
+  }
+  -- show_end_of_line = false,
+}
 EOF
 endif
 
@@ -1232,6 +1343,7 @@ if has('nvim')
   if !executable('gh')
     echo "You need to install gh: https://cli.github.com"
   endif
+endif
 
 lua << EOF
 require"octo".setup({
@@ -1266,14 +1378,14 @@ require"octo".setup({
       delete_comment = "<space>cd",        -- delete comment
       next_comment = "]c",                 -- go to next comment
       prev_comment = "[c",                 -- go to previous comment
-      react_hooray = "<space>rp",          -- add/remove 🎉 reaction
+      react_hooray = "<space>rp",          -- add/remove � reaction
       react_heart = "<space>rh",           -- add/remove ❤️ reaction
-      react_eyes = "<space>re",            -- add/remove 👀 reaction
-      react_thumbs_up = "<space>r+",       -- add/remove 👍 reaction
-      react_thumbs_down = "<space>r-",     -- add/remove 👎 reaction
-      react_rocket = "<space>rr",          -- add/remove 🚀 reaction
-      react_laugh = "<space>rl",           -- add/remove 😄 reaction
-      react_confused = "<space>rc",        -- add/remove 😕 reaction
+      react_eyes = "<space>re",            -- add/remove � reaction
+      react_thumbs_up = "<space>r+",       -- add/remove � reaction
+      react_thumbs_down = "<space>r-",     -- add/remove � reaction
+      react_rocket = "<space>rr",          -- add/remove � reaction
+      react_laugh = "<space>rl",           -- add/remove � reaction
+      react_confused = "<space>rc",        -- add/remove � reaction
     },
     pull_request = {
       checkout_pr = "<space>po",           -- checkout PR
@@ -1299,14 +1411,14 @@ require"octo".setup({
       delete_comment = "<space>cd",        -- delete comment
       next_comment = "]c",                 -- go to next comment
       prev_comment = "[c",                 -- go to previous comment
-      react_hooray = "<space>rp",          -- add/remove 🎉 reaction
+      react_hooray = "<space>rp",          -- add/remove � reaction
       react_heart = "<space>rh",           -- add/remove ❤️ reaction
-      react_eyes = "<space>re",            -- add/remove 👀 reaction
-      react_thumbs_up = "<space>r+",       -- add/remove 👍 reaction
-      react_thumbs_down = "<space>r-",     -- add/remove 👎 reaction
-      react_rocket = "<space>rr",          -- add/remove 🚀 reaction
-      react_laugh = "<space>rl",           -- add/remove 😄 reaction
-      react_confused = "<space>rc",        -- add/remove 😕 reaction
+      react_eyes = "<space>re",            -- add/remove � reaction
+      react_thumbs_up = "<space>r+",       -- add/remove � reaction
+      react_thumbs_down = "<space>r-",     -- add/remove � reaction
+      react_rocket = "<space>rr",          -- add/remove � reaction
+      react_laugh = "<space>rl",           -- add/remove � reaction
+      react_confused = "<space>rc",        -- add/remove � reaction
     },
     review_thread = {
       goto_issue = "<space>gi",            -- navigate to a local repo issue
@@ -1318,18 +1430,18 @@ require"octo".setup({
       select_next_entry = "]q",            -- move to previous changed file
       select_prev_entry = "[q",            -- move to next changed file
       close_review_tab = "<C-c>",          -- close review tab
-      react_hooray = "<space>rp",          -- add/remove 🎉 reaction
+      react_hooray = "<space>rp",          -- add/remove � reaction
       react_heart = "<space>rh",           -- add/remove ❤️ reaction
-      react_eyes = "<space>re",            -- add/remove 👀 reaction
-      react_thumbs_up = "<space>r+",       -- add/remove 👍 reaction
-      react_thumbs_down = "<space>r-",     -- add/remove 👎 reaction
-      react_rocket = "<space>rr",          -- add/remove 🚀 reaction
-      react_laugh = "<space>rl",           -- add/remove 😄 reaction
-      react_confused = "<space>rc",        -- add/remove 😕 reaction
+      react_eyes = "<space>re",            -- add/remove � reaction
+      react_thumbs_up = "<space>r+",       -- add/remove � reaction
+      react_thumbs_down = "<space>r-",     -- add/remove � reaction
+      react_rocket = "<space>rr",          -- add/remove � reaction
+      react_laugh = "<space>rl",           -- add/remove � reaction
+      react_confused = "<space>rc",        -- add/remove � reaction
     },
     submit_win = {
       approve_review = "<C-a>",            -- approve review
-      comment_review = "<C-m>",            -- comment review
+      --comment_review = "<C-m>",            -- comment review
       request_changes = "<C-r>",           -- request changes review
       close_review_tab = "<C-c>",          -- close review tab
     },
@@ -1360,6 +1472,8 @@ require"octo".setup({
   }
 })
 EOF
-endif
 
 " vim:ts=2:sw=2:et
+
+omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
+vnoremap <silent> m :lua require('tsht').nodes()<CR>
