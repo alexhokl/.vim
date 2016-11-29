@@ -60,7 +60,7 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 "set colorcolumn=79
-"set relativenumber
+set relativenumber
 "set norelativenumber
 
 " mail line wrapping
@@ -71,8 +71,8 @@ set complete-=i
 set showmatch
 set smarttab
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 set nrformats-=octal
@@ -86,7 +86,7 @@ set ttimeoutlen=10
 
 " Better Completion
 set complete=.,w,b,u,t
-set completeopt=longest,menuone
+set completeopt=longest,menuone,preview
 
 if &history < 1000
   set history=50
@@ -250,13 +250,13 @@ map <C-l> <C-W>l
 nmap <leader>w :w!<cr>
 
 " Center the screen
-nnoremap <space> zz
+" nnoremap <space> zz
 
 " Move up and down on splitted lines (on small width screens)
-map <Up> gk
-map <Down> gj
-map k gk
-map j gj
+" map <Up> gk
+" map <Down> gj
+" map k gk
+" map j gj
 
 " Just go out in insert mode
 imap jk <ESC>l
@@ -432,14 +432,14 @@ command! MyCtrlPTag call MyCtrlPTag()
 nmap <C-g> :MyCtrlPTag<cr>
 imap <C-g> <esc>:MyCtrlPTag<cr>
 
-nmap <C-b> :CtrlPCurWD<cr>
-imap <C-b> <esc>:CtrlPCurWD<cr>
+" nmap <C-b> :CtrlPCurWD<cr>
+" imap <C-b> <esc>:CtrlPCurWD<cr>
 
 " ==================== Fugitive ====================
-nnoremap <leader>ga :Git add %:p<CR><CR>
+" nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gp :Gpush<CR>
-vnoremap <leader>gb :Gblame<CR>
+" nnoremap <leader>gp :Gpush<CR>
+" vnoremap <leader>gb :Gblame<CR>
 
 " =================== Vim-cfmt ===================
 let g:cfmt_style = '-linux'
