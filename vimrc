@@ -63,6 +63,9 @@ autocmd FileType help wincmd L
 set wrap
 set textwidth=80
 set formatoptions=qrn1
+"set colorcolumn=79
+set relativenumber
+"set norelativenumber
 
 " Do not use relative numbers to where the cursor is.
 set norelativenumber
@@ -74,8 +77,8 @@ set complete-=i
 set showmatch
 set smarttab
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 set nrformats-=octal
@@ -89,7 +92,7 @@ set ttimeoutlen=10
 
 " Better Completion
 set complete=.,w,b,u,t
-set completeopt=longest,menuone
+set completeopt=longest,menuone,preview
 
 if &history < 1000
   set history=50
@@ -235,13 +238,13 @@ map <C-l> <C-W>l
 nmap <leader>w :w!<cr>
 
 " Center the screen
-nnoremap <space> zz
+" nnoremap <space> zz
 
 " Move up and down on splitted lines (on small width screens)
-map <Up> gk
-map <Down> gj
-map k gk
-map j gj
+" map <Up> gk
+" map <Down> gj
+" map k gk
+" map j gj
 
 " Just go out in insert mode
 imap jk <ESC>l
@@ -394,10 +397,10 @@ set wildignore+=*.orig                           " Merge resolution files
 " ----------------------------------------- "
 
 " ==================== Fugitive ====================
-nnoremap <leader>ga :Git add %:p<CR><CR>
+" nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gp :Gpush<CR>
-vnoremap <leader>gb :Gblame<CR>
+" nnoremap <leader>gp :Gpush<CR>
+" vnoremap <leader>gb :Gblame<CR>
 
 " =================== Vim-cfmt ===================
 let g:cfmt_style = '-linux'
