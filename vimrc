@@ -41,6 +41,7 @@ set smartcase                   " ... but not when search pattern contains upper
 set ttyfast
 " set ttyscroll=3               " noop on linux ?
 set lazyredraw          	      " Wait to redraw "
+set clipboard=unnamed
 
 " speed up syntax highlighting
 set nocursorcolumn
@@ -62,7 +63,7 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 "set colorcolumn=79
-"set relativenumber
+set relativenumber
 "set norelativenumber
 
 " mail line wrapping
@@ -74,8 +75,8 @@ set showmatch
 set smarttab
 
 set et
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 set nrformats-=octal
@@ -253,13 +254,17 @@ map <C-l> <C-W>l
 nmap <leader>w :w!<cr>
 
 " Center the screen
-nnoremap <space> zz
+" nnoremap <space> zz
 
 " Move up and down on splitted lines (on small width screens)
-map <Up> gk
-map <Down> gj
-map k gk
-map j gj
+"map <Up> gk
+"map <Down> gj
+" map k gk
+" map j gj
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 " Just go out in insert mode
 imap jk <ESC>l
@@ -427,10 +432,16 @@ imap <C-g> <esc>:MyCtrlPTag<cr>
 "imap <C-b> <esc>:CtrlPCurWD<cr>
 
 " ==================== Fugitive ====================
-nnoremap <leader>ga :Git add %:p<CR><CR>
+nnoremap <leader>ga :Gwrite<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
-vnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gb :Gblame<CR>
+"nnoremap <leader>gm :Gcommit<CR>
+nnoremap <leader>gco :Gread<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gw :Gbrowse<CR>
+"nnoremap <leader>gan :Git commit --amend --no-edit<CR>
+nnoremap <leader>gl :Glog -- %<CR>
 
 " =================== Vim-cfmt ===================
 let g:cfmt_style = '-linux'
@@ -546,6 +557,7 @@ let g:vim_markdown_toc_autofit = 1
 
 " Disable conceal
 let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 
 " Allow the ge command to follow named anchors in links of the form
 " file#anchor or just #anchor, where file may omit the .md extension as usual
@@ -555,6 +567,21 @@ let g:vim_markdown_follow_anchor = 1
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
+
+" latex math
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+
+"indentation
+let g:vim_markdown_new_list_item_indent = 2
+
+nnoremap h1 I#<space><ESC>
+nnoremap h2 I##<space><ESC>
+nnoremap h3 I###<space><ESC>
+nnoremap h4 I####<space><ESC>
+nnoremap h5 I#####<space><ESC>
+nnoremap h6 I######<space><ESC>
+nnoremap sh I```sh<CR><CR>```<ESC>kI
 
 " =================== vim-airline ========================
 
