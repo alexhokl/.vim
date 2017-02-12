@@ -41,6 +41,7 @@ set smartcase                   " ... but not when search pattern contains upper
 set ttyfast
 " set ttyscroll=3               " noop on linux ?
 set lazyredraw          	      " Wait to redraw "
+set clipboard=unnamed
 
 " speed up syntax highlighting
 set nocursorcolumn
