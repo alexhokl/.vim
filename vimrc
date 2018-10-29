@@ -90,7 +90,7 @@ set ttimeoutlen=10
 
 " Better Completion
 set complete=.,w,b,u,t
-set completeopt=longest,menuone
+set completeopt=longest,menuone,preview
 
 if &history < 1000
   set history=50
@@ -346,6 +346,9 @@ autocmd BufNewFile,BufReadPost *.scala setl shiftwidth=2 expandtab
 " Markdown Settings
 autocmd BufNewFile,BufReadPost *.md setl ts=4 sw=4 sts=4 expandtab
 
+" C# Settings
+autocmd BufNewFile,BufReadPost *.cs setl ts=4 sw=4 sts=4 expandtab
+
 " lua settings
 autocmd BufNewFile,BufRead *.lua setlocal noet ts=4 sw=4 sts=4
 
@@ -600,3 +603,71 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 let g:terraform_fmt_on_save=1
 
 " vim:ts=2:sw=2:et
+
+" =================== omnisharp-vim ========================
+
+let g:deoplete#enable_at_startup=1
+let g:syntastic_cs_checkers = ['code_checker']
+let g:OmniSharp_selector_ui = 'ctrlp'
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+call deoplete#custom#option('sources', {
+		\ 'cs': ['omnisharp'],
+		\})
+
+augroup omnisharp_commands
+  autocmd!
+
+  " When Syntastic is available but not ALE, automatic syntax check on events
+  autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+
+  " Show type information automatically when the cursor stops moving
+  autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+
+  " The following commands are contextual, based on the cursor position.
+  autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+
+  " Finds members in the current buffer
+  autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+  autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+  autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+  autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+
+
+  " Navigate up and down by method/property/field
+  autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+  autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+augroup END
+
+" Contextual code actions (uses fzf, CtrlP or unite.vim when available)
+nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+" Run code actions with text selected in visual mode to extract method
+xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+
+" Rename with dialog
+nnoremap <Leader>nm :OmniSharpRename<CR>
+nnoremap <F2> :OmniSharpRename<CR>
+" Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
+command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+
+nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+
+" Start the omnisharp server for the current solution
+nnoremap <Leader>ss :OmniSharpStartServer<CR>
+nnoremap <Leader>sp :OmniSharpStopServer<CR>
+
+" Add syntax highlighting for types and interfaces
+nnoremap <Leader>th :OmniSharpHighlightTypes<CR>
+
+" Enable snippet completion
+" let g:OmniSharp_want_snippet=1
+
+" debugging
+let g:OmniSharp_proc_debug = 1
+let g:OmniSharp_loglevel = 'debug'
