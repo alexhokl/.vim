@@ -671,3 +671,8 @@ nnoremap <Leader>th :OmniSharpHighlightTypes<CR>
 " debugging
 let g:OmniSharp_proc_debug = 1
 let g:OmniSharp_loglevel = 'debug'
+
+" =================== dart-vim-plugin ========================
+
+let dart_style_guide = 2
+let dart_format_on_save = 1
