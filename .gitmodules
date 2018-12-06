@@ -110,3 +110,12 @@
 [submodule "bundle/ale"]
 	path = bundle/ale
 	url = https://github.com/w0rp/ale
+[submodule "bundle/dart-vim-plugin"]
+	path = bundle/dart-vim-plugin
+	url = https://github.com/dart-lang/dart-vim-plugin
+[submodule "bundle/vim-lsc"]
+	path = bundle/vim-lsc
+	url = https://github.com/natebosch/vim-lsc
+[submodule "bundle/vim-lsc-dart"]
+	path = bundle/vim-lsc-dart
+	url = https://github.com/natebosch/vim-lsc-dart
