@@ -434,7 +434,8 @@ imap <C-b> <esc>:CtrlPCurWD<cr>
 nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
-vnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gm :Gcommit<CR>
 
 " =================== Vim-cfmt ===================
 let g:cfmt_style = '-linux'
