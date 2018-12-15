@@ -121,3 +121,6 @@
 [submodule "bundle/angeldoc-vim"]
 	path = bundle/angeldoc-vim
 	url = https://github.com/jpfeiffer16/angeldoc-vim
+[submodule "bundle/vim-snippets"]
+	path = bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets
