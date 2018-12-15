@@ -130,3 +130,6 @@
 [submodule "bundle/git-conflict.nvim"]
 	path = bundle/git-conflict.nvim
 	url = https://github.com/akinsho/git-conflict.nvim
+[submodule "bundle/vim-snippets"]
+	path = bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets
