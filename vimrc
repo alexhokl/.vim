@@ -257,10 +257,14 @@ nmap <leader>w :w!<cr>
 nnoremap <space> zz
 
 " Move up and down on splitted lines (on small width screens)
-map <Up> gk
-map <Down> gj
+"map <Up> gk
+"map <Down> gj
 map k gk
 map j gj
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 " Just go out in insert mode
 imap jk <ESC>l
