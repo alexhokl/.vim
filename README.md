@@ -10,8 +10,8 @@ curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimag
 chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/bin/nvim
 pip install setuptools
-pip install --upgrade neovim
-pip3 install --upgrade neovim
+pip install --upgrade pynvim
+pip3 install --upgrade pynvim
 cd $HOME
 git clone --recursive https://github.com/alexhokl/.vim.git .vim
 cd $HOME/.vim
