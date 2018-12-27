@@ -272,7 +272,7 @@ imap jk <ESC>l
 nnoremap <F6> :setlocal spell! spell?<CR>
 
 " Select search pattern howewever do not jump to the next one
-nnoremap <leader>c :TComment<CR>
+nnoremap <leader>/ :TComment<CR>
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -439,9 +439,11 @@ nnoremap <leader>ga :Gwrite<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gm :Gcommit<CR>
+"nnoremap <leader>gm :Gcommit<CR>
 nnoremap <leader>gco :Gread<CR>
 nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gw :Gbrowse<CR>
+"nnoremap <leader>gan :Git commit --amend --no-edit<CR>
 
 " =================== Vim-cfmt ===================
 let g:cfmt_style = '-linux'
