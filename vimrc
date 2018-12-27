@@ -440,6 +440,8 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gm :Gcommit<CR>
+nnoremap <leader>gco :Gread<CR>
+nnoremap <leader>gd :Gdiff<CR>
 
 " =================== Vim-cfmt ===================
 let g:cfmt_style = '-linux'
