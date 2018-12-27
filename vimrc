@@ -435,7 +435,7 @@ nmap <C-b> :CtrlPCurWD<cr>
 imap <C-b> <esc>:CtrlPCurWD<cr>
 
 " ==================== Fugitive ====================
-nnoremap <leader>ga :Git add %:p<CR><CR>
+nnoremap <leader>ga :Gwrite<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gb :Gblame<CR>
