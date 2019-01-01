@@ -584,6 +584,13 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
 
+nnoremap h1 I#<space><ESC>
+nnoremap h2 I##<space><ESC>
+nnoremap h3 I###<space><ESC>
+nnoremap h4 I####<space><ESC>
+nnoremap h5 I#####<space><ESC>
+nnoremap h6 I######<space><ESC>
+
 " =================== vim-airline ========================
 
 let g:airline_theme='solarized'
