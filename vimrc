@@ -254,7 +254,7 @@ map <C-l> <C-W>l
 nmap <leader>w :w!<cr>
 
 " Center the screen
-nnoremap <space> zz
+" nnoremap <space> zz
 
 " Move up and down on splitted lines (on small width screens)
 "map <Up> gk
