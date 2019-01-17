@@ -658,8 +658,8 @@ augroup omnisharp_commands
 
 
   " Navigate up and down by method/property/field
-  autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
-  autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+  autocmd FileType cs nnoremap <buffer> [m :OmniSharpNavigateUp<CR>
+  autocmd FileType cs nnoremap <buffer> ]m :OmniSharpNavigateDown<CR>
 augroup END
 
 " Contextual code actions (uses fzf, CtrlP or unite.vim when available)
