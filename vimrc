@@ -259,8 +259,8 @@ nmap <leader>w :w!<cr>
 " Move up and down on splitted lines (on small width screens)
 "map <Up> gk
 "map <Down> gj
-map k gk
-map j gj
+" map k gk
+" map j gj
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
@@ -587,6 +587,7 @@ nnoremap h3 I###<space><ESC>
 nnoremap h4 I####<space><ESC>
 nnoremap h5 I#####<space><ESC>
 nnoremap h6 I######<space><ESC>
+nnoremap sh I```sh<CR><CR>```<ESC>kI
 
 " =================== vim-airline ========================
 
