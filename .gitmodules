@@ -152,3 +152,6 @@
 [submodule "bundle/vim-sandwich"]
 	path = bundle/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich
+[submodule "bundle/vim-alexhokl"]
+	path = bundle/vim-alexhokl
+	url = https://github.com/alexhokl/vim-alexhokl
