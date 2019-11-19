@@ -161,3 +161,6 @@
 [submodule "bundle/angeldoc-vim"]
 	path = bundle/angeldoc-vim
 	url = https://github.com/jpfeiffer16/angeldoc-vim
+[submodule "bundle/vim-alexhokl"]
+	path = bundle/vim-alexhokl
+	url = ssh://github.com/alexhokl/vim-alexhokl
