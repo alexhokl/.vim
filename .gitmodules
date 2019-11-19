@@ -164,3 +164,6 @@
 [submodule "bundle/limelight.vim"]
 	path = bundle/limelight.vim
 	url = https://github.com/junegunn/limelight.vim
+[submodule "bundle/vim-alexhokl"]
+	path = bundle/vim-alexhokl
+	url = https://github.com/alexhokl/vim-alexhokl
