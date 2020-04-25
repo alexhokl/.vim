@@ -80,13 +80,13 @@ git submodule add https://github.com/OmniSharp/omnisharp-vim ~/.vim/bundle/omnis
 ```
 
 ## Plugins Used
-
-* [Dockerfile](https://github.com/docker/docker/tree/master/contrib/syntax/vim)
 * [github.com/w0rp/ale](https://github.com/w0rp/ale)
 * [github.com/neoclide/coc.nvim](https://github.com/neoclide/coc.nvim.git)
 * [github.com/dart-lang/dart-vim-plugin](https://github.com/dart-lang/dart-vim-plugin)
 * [github.com/Raimondi/delimitMate](https://github.com/Raimondi/delimitMate.git)
 * [github.com/editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
+* [github.com/junegunn/fzf](https://github.com/junegunn/fzf)
+* [github.com/junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)
 * [github.com/vivien/vim-linux-coding-style](https://github.com/vivien/vim-linux-coding-style.git)
 * [github.com/chr4/nginx.vim](https://github.com/chr4/nginx.vim.git)
 * [github.com/OmniSharp/omnisharp-vim](https://github.com/OmniSharp/omnisharp-vim)
