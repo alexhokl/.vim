@@ -13,6 +13,8 @@ install: ## Sets up symlink for user and root .vimrc for vim and neovim.
 	sudo mkdir -p /root/.config
 	sudo ln -snf "$(HOME)/.vim" /root/.config/nvim
 	sudo ln -snf "$(HOME)/.vimrc" /root/.config/nvim/init.vim
+	./bundle/angeldoc-vim/manage-releases.sh
+	nvim -c "UpdateRemotePlugins" -c "GoInstallBinaries" -c "CocInstall coc-python" -c "CocInstall coc-yaml" vimrc
 
 .PHONY: update
 update: update-pathogen update-plugins ## Updates pathogen and all plugins.
@@ -54,6 +56,34 @@ remove-submodule: ## Removes a git submodule (ex MODULE=bundle/nginx.vim).
 	git rm -f $(MODULE)
 	$(RM) -r $(MODULE).tmp
 
+.PHONY: update-alexhokl
+update-alexhokl:
+	cd bundle/omnisharp-vim && git pull origin master
+	cd bundle/coc.nvim && git pull origin release
+	cd bundle/ultisnips && git pull origin master
+	cd bundle/ale && git pull origin master
+	cd bundle/dart-vim-plugin && git pull origin master
+	cd bundle/vim-lsc && git pull origin master
+	cd bundle/vim-lsc-dart && git pull origin master
+	cd bundle/tlib_vim && git pull origin master
+	cd bundle/vim-addon-mw-utils && git pull origin master
+	cd bundle/vim-snipmate && git pull origin master
+	cd bundle/vim-snippets && git pull origin master
+	cd bundle/tcomment_vim && git pull origin master
+	cd bundle/vim-rhubarb && git pull origin master
+	cd bundle/vim-unimpaired && git pull origin master
+	cd bundle/editorconfig-vim && git pull origin master
+	cd bundle/vim-swap && git pull origin master
+	cd bundle/vim-sandwich && git pull origin master
+	cd bundle/fzf && git pull origin master
+	cd bundle/fzf.vim && git pull origin master
+	cd bundle/limelight.vim && git pull origin master
+	cd bundle/angeldoc-vim && git pull origin master
+	cd bundle/vim-alexhokl && git pull origin master
+
+.PHONY: install-angeldoc
+install-angeldoc:
+	./bundle/angeldoc-vim/manage-releases.sh
 
 .PHONY: help
 help:
