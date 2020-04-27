@@ -52,7 +52,6 @@ update                         Updates pathogen and all plugins.
 ```
 
 ## Plugins Used
-* [github.com/ctrlpvim/ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim.git)
 * [github.com/Raimondi/delimitMate](https://github.com/Raimondi/delimitMate.git)
 * [github.com/vivien/vim-linux-coding-style](https://github.com/vivien/vim-linux-coding-style.git)
 * [github.com/chr4/nginx.vim](https://github.com/chr4/nginx.vim.git)
