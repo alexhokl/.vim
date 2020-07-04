@@ -65,11 +65,10 @@ set wrap
 set textwidth=80
 set formatoptions=qrn1
 "set colorcolumn=79
-set relativenumber
 "set norelativenumber
 
 " Do not use relative numbers to where the cursor is.
-set norelativenumber
+set relativenumber
 
 " Apply the indentation of the current line to the next line.
 set autoindent
