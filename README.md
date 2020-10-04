@@ -45,9 +45,6 @@ Open nvim and execute the following commands
 :GoInstallBinaries
 ```
 
-Note that extension `coc-omnisharp` should not be enabled since `omnisharp-vim`
-is already installed.
-
 ### To update the plugins (submodules)
 
 ```sh
@@ -84,7 +81,6 @@ git submodule add https://github.com/OmniSharp/omnisharp-vim ~/.vim/bundle/omnis
 
 ## Plugins Used
 * [github.com/w0rp/ale](https://github.com/w0rp/ale)
-* [github.com/neoclide/coc.nvim](https://github.com/neoclide/coc.nvim.git)
 * [github.com/dart-lang/dart-vim-plugin](https://github.com/dart-lang/dart-vim-plugin)
 * [github.com/editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
 * [github.com/junegunn/fzf](https://github.com/junegunn/fzf)

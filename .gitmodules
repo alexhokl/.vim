@@ -100,10 +100,6 @@
 [submodule "bundle/openai.vim"]
 	path = bundle/openai.vim
 	url = https://github.com/jessfraz/openai.vim.git
-[submodule "bundle/coc.nvim"]
-	path = bundle/coc.nvim
-	url = https://github.com/neoclide/coc.nvim.git
-	branch = release
 [submodule "bundle/omnisharp-vim"]
 	path = bundle/omnisharp-vim
 	url = https://github.com/OmniSharp/omnisharp-vim
