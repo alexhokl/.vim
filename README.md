@@ -45,7 +45,10 @@ Open nvim and execute the following commands
 :GoInstallBinaries
 ```
 
-To update the plugins (submodules)
+Note that extension `coc-omnisharp` should not be enabled since `omnisharp-vim`
+is already installed.
+
+### To update the plugins (submodules)
 
 ```sh
 make update-alexhokl
