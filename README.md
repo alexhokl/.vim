@@ -81,6 +81,7 @@ git submodule add https://github.com/OmniSharp/omnisharp-vim ~/.vim/bundle/omnis
 
 ## Plugins Used
 * [github.com/w0rp/ale](https://github.com/w0rp/ale)
+* [github.com/ctrlpvim/ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim.git)
 * [github.com/dart-lang/dart-vim-plugin](https://github.com/dart-lang/dart-vim-plugin)
 * [github.com/editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
 * [github.com/junegunn/fzf](https://github.com/junegunn/fzf)
