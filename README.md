@@ -102,7 +102,7 @@ git submodule add https://github.com/OmniSharp/omnisharp-vim ~/.vim/bundle/omnis
 * [github.com/MarcWeber/vim-addon-mw-utils](https://github.com/MarcWeber/vim-addon-mw-utils)
 * [github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline.git)
 * [github.com/vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes.git)
-* [ssh:/hub.com/alexhokl/vim-alexhokl](ssh://github.com/alexhokl/vim-alexhokl)
+* [github.com/alexhokl/vim-alexhokl](https://github.com/alexhokl/vim-alexhokl)
 * [github.com/moll/vim-bbye](https://github.com/moll/vim-bbye.git)
 * [github.com/ntpeters/vim-better-whitespace](https://github.com/ntpeters/vim-better-whitespace.git)
 * [github.com/ap/vim-buftabline](https://github.com/ap/vim-buftabline.git)
