@@ -43,6 +43,7 @@ Open nvim and execute the following commands
 ```
 :UpdateRemotePlugins
 :GoInstallBinaries
+:CocInstall coc-python
 ```
 
 Note that extension `coc-omnisharp` should not be enabled since `omnisharp-vim`
