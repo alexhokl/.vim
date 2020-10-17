@@ -10,5 +10,8 @@
       "filetypes": ["rust"],
       "rootPatterns": ["Cargo.toml"]
     }
+  },
+  "yaml.schemas": {
+    "kubernetes": ["/*.yaml"]
   }
 }
