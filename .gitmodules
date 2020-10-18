@@ -164,3 +164,6 @@
 [submodule "bundle/vim-alexhokl"]
 	path = bundle/vim-alexhokl
 	url = https://github.com/alexhokl/vim-alexhokl
+[submodule "bundle/angeldoc-vim"]
+	path = bundle/angeldoc-vim
+	url = https://github.com/jpfeiffer16/angeldoc-vim
