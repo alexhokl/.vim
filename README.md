@@ -36,6 +36,8 @@ git clone --recursive https://github.com/alexhokl/.vim.git .vim
 cd $HOME/.vim
 git submodule update --init
 make install
+
+./bundle/angeldoc-vim/manage-releases.sh
 ```
 
 Open nvim and execute the following commands
