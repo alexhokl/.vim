@@ -136,3 +136,6 @@
 [submodule "bundle/vim-sandwich"]
 	path = bundle/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich
+[submodule "bundle/vimspector"]
+	path = bundle/vimspector
+	url = https://github.com/puremourning/vimspector
