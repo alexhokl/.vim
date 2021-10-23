@@ -121,3 +121,6 @@
 [submodule "bundle/git-conflict.nvim"]
 	path = bundle/git-conflict.nvim
 	url = https://github.com/akinsho/git-conflict.nvim
+[submodule "bundle/angeldoc-vim"]
+	path = bundle/angeldoc-vim
+	url = https://github.com/jpfeiffer16/angeldoc-vim
