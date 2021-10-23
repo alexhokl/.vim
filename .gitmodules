@@ -58,9 +58,6 @@
 [submodule "bundle/bufferline.nvim"]
 	path = bundle/bufferline.nvim
 	url = https://github.com/akinsho/bufferline.nvim.git
-[submodule "bundle/lspsaga.nvim"]
-	path = bundle/lspsaga.nvim
-	url = https://github.com/glepnir/lspsaga.nvim.git
 [submodule "bundle/cmp-path"]
 	path = bundle/cmp-path
 	url = https://github.com/hrsh7th/cmp-path.git
@@ -145,3 +142,18 @@
 [submodule "bundle/vim-sandwich"]
 	path = bundle/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich
+[submodule "bundle/cmp-treesitter"]
+	path = bundle/cmp-treesitter
+	url = https://github.com/ray-x/cmp-treesitter
+[submodule "bundle/lspkind-nvim"]
+	path = bundle/lspkind-nvim
+	url = https://github.com/onsails/lspkind-nvim
+[submodule "bundle/lsp_signature.nvim"]
+	path = bundle/lsp_signature.nvim
+	url = https://github.com/ray-x/lsp_signature.nvim
+[submodule "bundle/mason.nvim"]
+	path = bundle/mason.nvim
+	url = https://github.com/williamboman/mason.nvim
+[submodule "bundle/mason-lspconfig.nvim"]
+	path = bundle/mason-lspconfig.nvim
+	url = https://github.com/williamboman/mason-lspconfig.nvim
