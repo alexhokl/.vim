@@ -139,3 +139,21 @@
 [submodule "bundle/vimspector"]
 	path = bundle/vimspector
 	url = https://github.com/puremourning/vimspector
+[submodule "bundle/cmp-treesitter"]
+	path = bundle/cmp-treesitter
+	url = https://github.com/ray-x/cmp-treesitter
+[submodule "bundle/cmp-spell"]
+	path = bundle/cmp-spell
+	url = https://github.com/f3fora/cmp-spell
+[submodule "bundle/lspkind-nvim"]
+	path = bundle/lspkind-nvim
+	url = https://github.com/onsails/lspkind-nvim
+[submodule "bundle/lsp_signature.nvim"]
+	path = bundle/lsp_signature.nvim
+	url = https://github.com/ray-x/lsp_signature.nvim
+[submodule "bundle/mason.nvim"]
+	path = bundle/mason.nvim
+	url = https://github.com/williamboman/mason.nvim
+[submodule "bundle/mason-lspconfig.nvim"]
+	path = bundle/mason-lspconfig.nvim
+	url = https://github.com/williamboman/mason-lspconfig.nvim
