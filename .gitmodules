@@ -118,3 +118,6 @@
 [submodule "bundle/vim-ocaml"]
 	path = bundle/vim-ocaml
 	url = https://github.com/ocaml/vim-ocaml.git
+[submodule "bundle/angeldoc-vim"]
+	path = bundle/angeldoc-vim
+	url = https://github.com/jpfeiffer16/angeldoc-vim
