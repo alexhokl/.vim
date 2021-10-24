@@ -157,3 +157,15 @@
 [submodule "bundle/mason-lspconfig.nvim"]
 	path = bundle/mason-lspconfig.nvim
 	url = https://github.com/williamboman/mason-lspconfig.nvim
+[submodule "bundle/nvim-treesitter-textobjects"]
+	path = bundle/nvim-treesitter-textobjects
+	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+[submodule "bundle/nvim-ts-autotag"]
+	path = bundle/nvim-ts-autotag
+	url = https://github.com/windwp/nvim-ts-autotag
+[submodule "bundle/nvim-treehopper"]
+	path = bundle/nvim-treehopper
+	url = https://github.com/mfussenegger/nvim-treehopper
+[submodule "bundle/nvim-treesitter-context"]
+	path = bundle/nvim-treesitter-context
+	url = https://github.com/nvim-treesitter/nvim-treesitter-context
