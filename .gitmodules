@@ -169,3 +169,6 @@
 [submodule "bundle/nvim-treesitter-context"]
 	path = bundle/nvim-treesitter-context
 	url = https://github.com/nvim-treesitter/nvim-treesitter-context
+[submodule "bundle/nlua.nvim"]
+	path = bundle/nlua.nvim
+	url = https://github.com/tjdevries/nlua.nvim
