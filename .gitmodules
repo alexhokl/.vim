@@ -157,3 +157,6 @@
 [submodule "bundle/mason-lspconfig.nvim"]
 	path = bundle/mason-lspconfig.nvim
 	url = https://github.com/williamboman/mason-lspconfig.nvim
+[submodule "bundle/nvim-treesitter-textobjects"]
+	path = bundle/nvim-treesitter-textobjects
+	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects
