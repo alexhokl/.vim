@@ -163,3 +163,6 @@
 [submodule "bundle/playground"]
 	path = bundle/playground
 	url = https://github.com/nvim-treesitter/playground
+[submodule "bundle/nlua.nvim"]
+	path = bundle/nlua.nvim
+	url = https://github.com/tjdevries/nlua.nvim
