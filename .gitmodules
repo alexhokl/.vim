@@ -160,3 +160,6 @@
 [submodule "bundle/nvim-treesitter-textobjects"]
 	path = bundle/nvim-treesitter-textobjects
 	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+[submodule "bundle/playground"]
+	path = bundle/playground
+	url = https://github.com/nvim-treesitter/playground
