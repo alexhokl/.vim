@@ -25,9 +25,6 @@
 [submodule "bundle/rust.vim"]
 	path = bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
-[submodule "bundle/vim-terraform"]
-	path = bundle/vim-terraform
-	url = https://github.com/hashivim/vim-terraform.git
 [submodule "bundle/vim-sensible"]
 	path = bundle/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
