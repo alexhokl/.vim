@@ -166,3 +166,6 @@
 [submodule "bundle/nlua.nvim"]
 	path = bundle/nlua.nvim
 	url = https://github.com/tjdevries/nlua.nvim
+[submodule "bundle/vim-sayonara"]
+	path = bundle/vim-sayonara
+	url = https://github.com/mhinz/vim-sayonara
