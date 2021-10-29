@@ -169,3 +169,6 @@
 [submodule "bundle/vim-sayonara"]
 	path = bundle/vim-sayonara
 	url = https://github.com/mhinz/vim-sayonara
+[submodule "bundle/sqls.nvim"]
+	path = bundle/sqls.nvim
+	url = https://github.com/nanotee/sqls.nvim
