@@ -178,3 +178,6 @@
 [submodule "bundle/sqls.nvim"]
 	path = bundle/sqls.nvim
 	url = https://github.com/nanotee/sqls.nvim
+[submodule "bundle/twilight.nvim"]
+	path = bundle/twilight.nvim
+	url = https://github.com/folke/twilight.nvim
