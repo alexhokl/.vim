@@ -175,3 +175,6 @@
 [submodule "bundle/nvim-ts-autotag"]
 	path = bundle/nvim-ts-autotag
 	url = https://github.com/windwp/nvim-ts-autotag
+[submodule "bundle/twilight.nvim"]
+	path = bundle/twilight.nvim
+	url = https://github.com/folke/twilight.nvim
