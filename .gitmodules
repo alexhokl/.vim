@@ -178,3 +178,6 @@
 [submodule "bundle/twilight.nvim"]
 	path = bundle/twilight.nvim
 	url = https://github.com/folke/twilight.nvim
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = https://github.com/godlygeek/tabular
