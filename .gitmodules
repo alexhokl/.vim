@@ -181,3 +181,6 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular
+[submodule "bundle/nvim-treehopper"]
+	path = bundle/nvim-treehopper
+	url = https://github.com/mfussenegger/nvim-treehopper
