@@ -59,6 +59,45 @@ remove-submodule: ## Removes a git submodule (ex MODULE=bundle/nginx.vim).
 	$(RM) -r $(MODULE).tmp || true
 	$(MAKE) README.md
 
+.PHONY: update-alexhokl
+update-alexhokl:
+	cd bundle/angeldoc-vim && git pull origin master
+	cd bundle/vim-snippets && git pull origin master
+	cd bundle/tcomment_vim && git pull origin master
+	cd bundle/vim-unimpaired && git pull origin master
+	cd bundle/editorconfig-vim && git pull origin master
+	cd bundle/vim-sandwich && git pull origin master
+	cd bundle/mason.nvim && git pull origin main
+	cd bundle/mason-lspconfig.nvim && git pull origin main
+	cd bundle/cmp-treesitter && git pull origin master
+	cd bundle/lspkind-nvim && git pull origin master
+	cd bundle/lsp_signature.nvim && git pull origin master
+	cd bundle/nvim-treesitter-textobjects && git pull origin master
+	cd bundle/nlua.nvim && git pull origin master
+	cd bundle/vim-sayonara && git pull origin master
+	cd bundle/sqls.nvim && git pull origin main
+	cd bundle/nvim-ts-autotag && git pull origin main
+	cd bundle/twilight.nvim && git pull origin main
+	cd bundle/tabular && git pull origin master
+	cd bundle/nvim-treehopper && git pull origin master
+	cd bundle/gitlinker.nvim && git pull origin master
+	cd bundle/todo-comments.nvim && git pull origin main
+	cd bundle/targets.vim && git pull origin master
+	cd bundle/cmp-nvim-ultisnips && git pull origin main
+	cd bundle/ultisnips && git pull origin master
+	cd bundle/trouble.nvim && git pull origin main
+	cd bundle/null-ls.nvim && git pull origin main
+	cd bundle/telescope-ui-select.nvim && git pull origin master
+	cd bundle/fidget.nvim && git pull origin legacy
+	cd bundle/nvim-treesitter-context && git pull origin master
+	cd bundle/bullets.vim && git pull origin master
+	cd bundle/d2-vim && git pull origin master
+	cd bundle/git-conflict.nvim && git pull origin main
+	cd bundle/flutter-tools.nvim && git pull origin main
+
+.PHONY: install-angeldoc
+install-angeldoc:
+	./bundle/angeldoc-vim/manage-releases.sh
 
 .PHONY: help
 help:

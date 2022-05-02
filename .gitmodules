@@ -187,3 +187,6 @@
 [submodule "bundle/gitlinker.nvim"]
 	path = bundle/gitlinker.nvim
 	url = https://github.com/ruifm/gitlinker.nvim
+[submodule "bundle/todo-comments.nvim"]
+	path = bundle/todo-comments.nvim
+	url = https://github.com/folke/todo-comments.nvim
