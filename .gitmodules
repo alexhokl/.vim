@@ -184,3 +184,6 @@
 [submodule "bundle/nvim-treehopper"]
 	path = bundle/nvim-treehopper
 	url = https://github.com/mfussenegger/nvim-treehopper
+[submodule "bundle/gitlinker.nvim"]
+	path = bundle/gitlinker.nvim
+	url = https://github.com/ruifm/gitlinker.nvim
