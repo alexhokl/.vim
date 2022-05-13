@@ -199,3 +199,6 @@
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips
+[submodule "bundle/trouble.nvim"]
+	path = bundle/trouble.nvim
+	url = https://github.com/folke/trouble.nvim
