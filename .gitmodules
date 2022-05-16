@@ -202,3 +202,6 @@
 [submodule "bundle/trouble.nvim"]
 	path = bundle/trouble.nvim
 	url = https://github.com/folke/trouble.nvim
+[submodule "bundle/null-ls.nvim"]
+	path = bundle/null-ls.nvim
+	url = https://github.com/jose-elias-alvarez/null-ls.nvim
