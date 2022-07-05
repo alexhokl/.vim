@@ -202,3 +202,6 @@
 [submodule "bundle/trouble.nvim"]
 	path = bundle/trouble.nvim
 	url = https://github.com/folke/trouble.nvim
+[submodule "bundle/telescope-ui-select.nvim"]
+	path = bundle/telescope-ui-select.nvim
+	url = https://github.com/nvim-telescope/telescope-ui-select.nvim
