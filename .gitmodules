@@ -205,3 +205,6 @@
 [submodule "bundle/null-ls.nvim"]
 	path = bundle/null-ls.nvim
 	url = https://github.com/jose-elias-alvarez/null-ls.nvim
+[submodule "bundle/telescope-ui-select.nvim"]
+	path = bundle/telescope-ui-select.nvim
+	url = https://github.com/nvim-telescope/telescope-ui-select.nvim
