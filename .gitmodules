@@ -208,3 +208,6 @@
 [submodule "bundle/telescope-ui-select.nvim"]
 	path = bundle/telescope-ui-select.nvim
 	url = https://github.com/nvim-telescope/telescope-ui-select.nvim
+[submodule "bundle/fidget.nvim"]
+	path = bundle/fidget.nvim
+	url = https://github.com/j-hui/fidget.nvim
