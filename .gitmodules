@@ -211,3 +211,6 @@
 [submodule "bundle/fidget.nvim"]
 	path = bundle/fidget.nvim
 	url = https://github.com/j-hui/fidget.nvim
+[submodule "bundle/nvim-treesitter-context"]
+	path = bundle/nvim-treesitter-context
+	url = https://github.com/nvim-treesitter/nvim-treesitter-context
