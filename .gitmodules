@@ -208,3 +208,6 @@
 [submodule "bundle/fidget.nvim"]
 	path = bundle/fidget.nvim
 	url = https://github.com/j-hui/fidget.nvim
+[submodule "bundle/bullets.vim"]
+	path = bundle/bullets.vim
+	url = https://github.com/dkarter/bullets.vim
