@@ -18,7 +18,6 @@ install: ## Sets up symlink for user and root .vimrc for vim and neovim.
 	./bundle/angeldoc-vim/manage-releases.sh
 	nvim \
 		-c "UpdateRemotePlugins" \
-		-c "LspInstall bashls clangd cmake dartls dockerls eslint gopls html jsonls sumneko_lua omnisharp powershell_es pyright rust_analyzer terraformls vimls yamlls" \
 		-c "Copilot setup" \
 		vimrc
 
