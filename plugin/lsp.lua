@@ -13,16 +13,17 @@ require("mason-lspconfig").setup({
 		"gopls",
 		"html",
 		"jsonls",
-		"sumneko_lua",
-		"omnisharp",
 		"ocamllsp",
+		"omnisharp",
 		"powershell_es",
 		"pyright",
 		"rust_analyzer",
+		"sumneko_lua",
 		"terraformls",
 		"vimls",
 		"yamlls",
 	},
+	automatic_installation = true,
 });
 -- local lsp_installer = require("nvim-lsp-installer")
 -- local path = require "nvim-lsp-installer.core.path"
@@ -32,6 +33,7 @@ require("cmp_nvim_ultisnips").setup {}
 local nvim_lsp = require('lspconfig')
 local cmp = require 'cmp'
 local lspkind = require('lspkind')
+local mason_config = require("mason-lspconfig")
 
 cmp.setup({
 	snippet = {
@@ -142,102 +144,110 @@ local on_attach = function(client, bufnr)
 	end
 end
 
-nvim_lsp.gopls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
-			},
-			staticcheck = true,
-		},
-	},
-})
-
-nvim_lsp.yamlls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		yaml = {
-			schemas = {
-				["https://bitbucket.org/atlassianlabs/atlascode/raw/main/resources/schemas/pipelines-schema.json"] = "bitbucket-pipelines.y*ml",
-				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-				kubernetes = "*.y*ml",
+mason_config.setup_handlers {
+	-- default handler
+	function(server_name)
+		nvim_lsp[server_name].setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+		}
+	end,
+	['gopls'] = function()
+		nvim_lsp.gopls.setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				gopls = {
+					analyses = {
+						unusedparams = true,
+					},
+					staticcheck = true,
+				},
 			},
 		}
-	},
-})
-
-nvim_lsp.omnisharp.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	root_dir = function(file, _)
-		if file:sub(- #".csx") == ".csx" then
-			return nvim_lsp.util.path.dirname(file)
-		end
-		local solution_path = nvim_lsp.util.root_pattern("*.sln")(file)
-		if solution_path then
-			return solution_path
-		end
-		return nvim_lsp.util.root_pattern("*.csproj")(file)
 	end,
-	-- uncomment to enable omnisharp/roslyn debug mode
-	-- cmd = {
-	--     "dotnet",
-	--     path.concat { os.getenv("HOME"), ".local/share/nvim/lsp_servers/omnisharp/", "omnisharp", "OmniSharp.dll" },
-	--     "--languageserver",
-	-- 	"--loglevel",
-	-- 	"Debug",
-	--     "--hostPID",
-	--     tostring(vim.fn.getpid()),
-	-- },
-})
-
-nvim_lsp.rust_analyzer.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		rust_analyzer = {
-			checkOnSave = "clippy",
+	['yamlls'] = function()
+		nvim_lsp.yamlls.setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				yaml = {
+					schemas = {
+						["https://bitbucket.org/atlassianlabs/atlascode/raw/main/resources/schemas/pipelines-schema.json"] = "bitbucket-pipelines.y*ml",
+						["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+						kubernetes = "*.y*ml",
+					},
+				}
+			},
 		}
-	},
-})
-
-nvim_lsp.sumneko_lua.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" }
-			}
-		}
-	},
-})
-
-nvim_lsp.sqls.setup {
-	on_attach = function(client, bufnr)
-		require('sqls').on_attach(client, bufnr)
 	end,
-	capabilities = capabilities,
-	flags = {
-		debounce_text_changes = 150,
-	},
-	cmd = {
-		"sqls",
-		-- "-trace",
-		-- "-log",
-		-- "/tmp/sqls.log",
-	},
-}
-
-nvim_lsp.dartls.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = {
-		debounce_text_changes = 150,
-	},
+	['omnisharp'] = function()
+		nvim_lsp.omnisharp.setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			root_dir = function(file, _)
+				if file:sub(- #".csx") == ".csx" then
+					return nvim_lsp.util.path.dirname(file)
+				end
+				local solution_path = nvim_lsp.util.root_pattern("*.sln")(file)
+				if solution_path then
+					return solution_path
+				end
+				return nvim_lsp.util.root_pattern("*.csproj")(file)
+			end,
+			-- uncomment to enable omnisharp/roslyn debug mode
+			-- cmd = {
+			--     "dotnet",
+			--     path.concat { os.getenv("HOME"), ".local/share/nvim/lsp_servers/omnisharp/", "omnisharp", "OmniSharp.dll" },
+			--     "--languageserver",
+			-- 	"--loglevel",
+			-- 	"Debug",
+			--     "--hostPID",
+			--     tostring(vim.fn.getpid()),
+			-- },
+		}
+	end,
+	['rust_analyzer'] = function()
+		nvim_lsp.rust_analyzer.setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				rust_analyzer = {
+					checkOnSave = "clippy",
+				}
+			},
+		}
+	end,
+	['sumneko_lua'] = function()
+		nvim_lsp.sumneko_lua.setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" }
+					}
+				}
+			},
+		}
+	end,
+	['sqls'] = function()
+		nvim_lsp.sqls.setup {
+			on_attach = function(client, bufnr)
+				require('sqls').on_attach(client, bufnr)
+			end,
+			capabilities = capabilities,
+			flags = {
+				debounce_text_changes = 150,
+			},
+			cmd = {
+				"sqls",
+				-- "-trace",
+				-- "-log",
+				-- "/tmp/sqls.log",
+			},
+		}
+	end,
 }
 
 require "lsp_signature".setup({
