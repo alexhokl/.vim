@@ -211,3 +211,6 @@
 [submodule "bundle/bullets.vim"]
 	path = bundle/bullets.vim
 	url = https://github.com/dkarter/bullets.vim
+[submodule "bundle/d2-vim"]
+	path = bundle/d2-vim
+	url = https://github.com/terrastruct/d2-vim
