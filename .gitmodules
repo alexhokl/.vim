@@ -217,3 +217,9 @@
 [submodule "bundle/d2-vim"]
 	path = bundle/d2-vim
 	url = https://github.com/terrastruct/d2-vim
+[submodule "bundle/nvim-dap"]
+	path = bundle/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap
+[submodule "bundle/nvim-dap-ui"]
+	path = bundle/nvim-dap-ui
+	url = https://github.com/rcarriga/nvim-dap-ui
