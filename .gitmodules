@@ -214,3 +214,6 @@
 [submodule "bundle/d2-vim"]
 	path = bundle/d2-vim
 	url = https://github.com/terrastruct/d2-vim
+[submodule "bundle/flutter-tools.nvim"]
+	path = bundle/flutter-tools.nvim
+	url = https://github.com/akinsho/flutter-tools.nvim
