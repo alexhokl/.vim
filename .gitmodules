@@ -217,3 +217,18 @@
 [submodule "bundle/flutter-tools.nvim"]
 	path = bundle/flutter-tools.nvim
 	url = https://github.com/akinsho/flutter-tools.nvim
+[submodule "bundle/nvim-dap"]
+	path = bundle/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap
+[submodule "bundle/nvim-dap-ui"]
+	path = bundle/nvim-dap-ui
+	url = https://github.com/rcarriga/nvim-dap-ui
+[submodule "bundle/nvim-dap-go"]
+	path = bundle/nvim-dap-go
+	url = https://github.com/leoluz/nvim-dap-go
+[submodule "bundle/nvim-dap-virtual-text"]
+	path = bundle/nvim-dap-virtual-text
+	url = https://github.com/theHamsta/nvim-dap-virtual-text
+[submodule "bundle/nvim-dap-python"]
+	path = bundle/nvim-dap-python
+	url = https://github.com/mfussenegger/nvim-dap-python
