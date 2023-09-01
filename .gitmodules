@@ -232,3 +232,6 @@
 [submodule "bundle/nvim-dap-python"]
 	path = bundle/nvim-dap-python
 	url = https://github.com/mfussenegger/nvim-dap-python
+[submodule "bundle/syntax-tree-surfer"]
+	path = bundle/syntax-tree-surfer
+	url = https://github.com/ziontee113/syntax-tree-surfer
