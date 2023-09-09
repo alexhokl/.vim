@@ -235,3 +235,6 @@
 [submodule "bundle/syntax-tree-surfer"]
 	path = bundle/syntax-tree-surfer
 	url = https://github.com/ziontee113/syntax-tree-surfer
+[submodule "bundle/yaml-companion.nvim"]
+	path = bundle/yaml-companion.nvim
+	url = https://github.com/someone-stole-my-name/yaml-companion.nvim
