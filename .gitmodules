@@ -238,3 +238,6 @@
 [submodule "bundle/yaml-companion.nvim"]
 	path = bundle/yaml-companion.nvim
 	url = https://github.com/someone-stole-my-name/yaml-companion.nvim
+[submodule "bundle/git-worktree.nvim"]
+	path = bundle/git-worktree.nvim
+	url = https://github.com/ThePrimeagen/git-worktree.nvim
