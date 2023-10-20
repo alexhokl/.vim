@@ -244,3 +244,6 @@
 [submodule "bundle/csharpls-extended-lsp.nvim"]
 	path = bundle/csharpls-extended-lsp.nvim
 	url = https://github.com/Decodetalkers/csharpls-extended-lsp.nvim
+[submodule "bundle/nvim-dap-dotnet"]
+	path = bundle/nvim-dap-dotnet
+	url = https://github.com/alexhokl/nvim-dap-dotnet
