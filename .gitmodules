@@ -103,8 +103,8 @@
 [submodule "bundle/vim-hclfmt"]
 	path = bundle/vim-hclfmt
 	url = https://github.com/fatih/vim-hclfmt.git
-[submodule "bundle/copliot.vim"]
-	path = bundle/copliot.vim
+[submodule "bundle/copilot.vim"]
+	path = bundle/copilot.vim
 	url = https://github.com/github/copilot.vim.git
 [submodule "bundle/jinja.vim"]
 	path = bundle/jinja.vim
