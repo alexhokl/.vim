@@ -112,8 +112,8 @@
 [submodule "bundle/vim-ocaml"]
 	path = bundle/vim-ocaml
 	url = https://github.com/ocaml/vim-ocaml.git
-[submodule "bundle/copliot.vim"]
-	path = bundle/copliot.vim
+[submodule "bundle/copilot.vim"]
+	path = bundle/copilot.vim
 	url = https://github.com/github/copilot.vim.git
 [submodule "bundle/jinja.vim"]
 	path = bundle/jinja.vim
