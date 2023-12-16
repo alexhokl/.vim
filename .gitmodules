@@ -247,3 +247,12 @@
 [submodule "bundle/nvim-dap-dotnet"]
 	path = bundle/nvim-dap-dotnet
 	url = https://github.com/alexhokl/nvim-dap-dotnet
+[submodule "bundle/vim-dadbod-completion"]
+	path = bundle/vim-dadbod-completion
+	url = https://github.com/kristijanhusak/vim-dadbod-completion
+[submodule "bundle/vim-dadbod-ui"]
+	path = bundle/vim-dadbod-ui
+	url = https://github.com/kristijanhusak/vim-dadbod-ui
+[submodule "bundle/vim-dadbod"]
+	path = bundle/vim-dadbod
+	url = https://github.com/alexhokl/vim-dadbod
