@@ -299,3 +299,59 @@ end
 vim.keymap.set('n', '<leader>fs', telescope_builtin.treesitter, default_opts)
 vim.keymap.set('n', '<leader>fm', method_search_using_treesitter, default_opts)
 
+local ts_utils = require("nvim-treesitter.ts_utils")
+local notify = require("notify")
+
+local is_node_of_types = function(node, types)
+    if node == nil then
+        return false
+    end
+    local node_type = node:type()
+    for _, t in ipairs(types) do
+        if node_type == t then
+            return true
+        end
+    end
+    return false
+end
+
+local swap_down_parameter = function()
+    local argument_node
+    local types = { "parameter_list", "argument_list" }
+    local node = ts_utils.get_node_at_cursor()
+    while node ~= nil do
+        if is_node_of_types(node, types) then
+            argument_node = node
+            break
+        end
+        node = node:parent()
+    end
+    if argument_node == nil then
+        vim.print("Parameter or argument list not found")
+        return
+    end
+
+    local list_node = argument_node:parent()
+    local children = list_node:iter_children()
+    local index = 0
+    for i, child in ipairs(children) do
+        if child == node then
+            index = i
+            break
+        end
+    end
+
+    if index == 0 then
+        return
+    end
+
+    local next_node = children[index + 1]
+    if next_node == nil then
+        return
+    end
+
+    local start_row, _, _, _ = next_node:range()
+    vim.api.nvim_win_set_cursor(0, { start_row, 0 })
+end
+
+vim.keymap.set("n", "vp", swap_down_parameter, { noremap = true })
