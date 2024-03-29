@@ -262,3 +262,6 @@
 [submodule "bundle/nvim-md-open-link"]
 	path = bundle/nvim-md-open-link
 	url = https://github.com/alexhokl/nvim-md-open-link
+[submodule "bundle/nvim-nio"]
+	path = bundle/nvim-nio
+	url = https://github.com/nvim-neotest/nvim-nio
