@@ -274,3 +274,6 @@
 [submodule "bundle/ollama.nvim"]
 	path = bundle/ollama.nvim
 	url = https://github.com/nomnivore/ollama.nvim
+[submodule "bundle/nvim-nio"]
+	path = bundle/nvim-nio
+	url = https://github.com/nvim-neotest/nvim-nio
