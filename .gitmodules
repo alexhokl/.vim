@@ -265,3 +265,6 @@
 [submodule "bundle/nvim-nio"]
 	path = bundle/nvim-nio
 	url = https://github.com/nvim-neotest/nvim-nio
+[submodule "bundle/oil.nvim"]
+	path = bundle/oil.nvim
+	url = https://github.com/stevearc/oil.nvim.git
