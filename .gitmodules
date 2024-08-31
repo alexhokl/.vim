@@ -280,3 +280,6 @@
 [submodule "bundle/oil.nvim"]
 	path = bundle/oil.nvim
 	url = https://github.com/stevearc/oil.nvim.git
+[submodule "bundle/bropilot.nvim"]
+	path = bundle/bropilot.nvim
+	url = https://github.com/meeehdi-dev/bropilot.nvim
