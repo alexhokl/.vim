@@ -283,3 +283,6 @@
 [submodule "bundle/bropilot.nvim"]
 	path = bundle/bropilot.nvim
 	url = https://github.com/meeehdi-dev/bropilot.nvim
+[submodule "bundle/cmp-ai"]
+	path = bundle/cmp-ai
+	url = https://github.com/tzachar/cmp-ai
