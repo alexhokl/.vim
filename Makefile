@@ -114,6 +114,9 @@ update-alexhokl:
 	cd bundle/ollama.nvim && git pull origin main
 	cd bundle/nvim-nio && git pull origin master
 	cd bundle/copilot.vim && git pull origin release
+	cd bundle/oil.nvim && git pull origin master
+	cd bundle/bropilot.nvim && git pull origin main
+	cd bundle/cmp-ai && git pull origin main
 
 .PHONY: install-angeldoc
 install-angeldoc:
