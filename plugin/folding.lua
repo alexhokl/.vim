@@ -1,7 +1,8 @@
 local defaultOpts = { noremap = true, silent = true }
 
 if vim.fn.has('folding') == 1 then
-	vim.o.foldmethod = 'indent'
+	vim.o.foldmethod = 'expr'
+	vim.o.foldexpr = vim.lsp.foldexpr()
 	vim.o.foldlevel = 99
 	vim.o.foldlevelstart = 99
 
