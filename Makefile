@@ -15,7 +15,6 @@ install: ## Sets up symlink for user and root .vimrc for vim and neovim.
 		sudo ln -snf "$(HOME)/.vim" /root/.config/nvim; \
 		sudo ln -snf "$(HOME)/.vimrc" /root/.config/nvim/init.vim; \
 	fi
-	./bundle/angeldoc-vim/manage-releases.sh
 	nvim \
 		-c "UpdateRemotePlugins" \
 		-c "Copilot setup" \
@@ -117,10 +116,6 @@ update-alexhokl:
 	cd bundle/oil.nvim && git pull origin master
 	cd bundle/bropilot.nvim && git pull origin main
 	cd bundle/cmp-ai && git pull origin main
-
-.PHONY: install-angeldoc
-install-angeldoc:
-	./bundle/angeldoc-vim/manage-releases.sh
 
 .PHONY: help
 help:
