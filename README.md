@@ -128,7 +128,6 @@ git submodule add https://github.com/OmniSharp/omnisharp-vim ~/.vim/bundle/omnis
 There's a lot more if you hit `,?` you can peruse all the ones connected to the leader `,`
 
 ## Plugins Used
-* [github.com/jpfeiffer16/angeldoc-vim](https://github.com/jpfeiffer16/angeldoc-vim)
 * [github.com/yetone/avante.nvim](https://github.com/yetone/avante.nvim.git)
 * [github.com/meeehdi-dev/bropilot.nvim](https://github.com/meeehdi-dev/bropilot.nvim)
 * [github.com/akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim.git)
