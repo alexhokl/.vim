@@ -141,13 +141,16 @@ local on_attach = function(client, bufnr)
 	if client.server_capabilities.documentFormattingProvider then
 		buf_set_keymap('n', '<leader>ff', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
-		-- format the current buffer on save
-		vim.api.nvim_create_autocmd('BufWritePre', {
-			buffer = bufnr,
-			callback = function()
-				vim.lsp.buf.format({ bufnr = bufnr, id = client.id })
-			end,
-		})
+		-- skip if file type is HTML
+		if vim.bo.filetype ~= 'html' then
+			-- format the current buffer on save
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.buf.format({ bufnr = bufnr, id = client.id })
+				end,
+			})
+		end
 	end
 
 	if client.server_capabilities.documentHighlightProvider then
