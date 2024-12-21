@@ -311,9 +311,6 @@ imap jk <ESC>l
 xnoremap ]e :move '>+1<CR>gv-gv
 xnoremap [e :move '<-2<CR>gv-gv
 
-vnoremap \< <gv
-vnoremap > >gv
-
 " spell check
 nnoremap <F6> :setlocal spell! spell?<CR>
 
