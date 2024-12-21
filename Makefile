@@ -62,7 +62,6 @@ remove-submodule: ## Removes a git submodule (ex MODULE=bundle/nginx.vim).
 
 .PHONY: update-alexhokl
 update-alexhokl:
-	cd bundle/angeldoc-vim && git pull origin master
 	cd bundle/vim-snippets && git pull origin master
 	cd bundle/tcomment_vim && git pull origin master
 	cd bundle/vim-unimpaired && git pull origin master
@@ -110,12 +109,9 @@ update-alexhokl:
 	cd bundle/vim-dadbod && git pull origin master
 	cd bundle/nvim-notify && git pull origin master
 	cd bundle/nvim-md-open-link && git pull origin main
-	cd bundle/ollama.nvim && git pull origin main
 	cd bundle/nvim-nio && git pull origin master
 	cd bundle/copilot.vim && git pull origin release
 	cd bundle/oil.nvim && git pull origin master
-	cd bundle/bropilot.nvim && git pull origin main
-	cd bundle/cmp-ai && git pull origin main
 
 .PHONY: help
 help:
