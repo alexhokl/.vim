@@ -91,3 +91,11 @@ vim.g.vim_markdown_follow_anchor = 1
 vim.g.vim_markdown_frontmatter = 1
 vim.g.vim_markdown_toml_frontmatter = 1
 vim.g.vim_markdown_json_frontmatter = 1
+
+-- bullets.vim
+vim.g.bullets_set_mappings = 0
+vim.g.bullets_auto_indent_after_colon = 0
+vim.keymap.set("n", "<leader>>", "<Plug>(bullets-demote)<cr>", defaultKeymapOpts)
+vim.keymap.set("v", "<leader>>", "<Plug>(bullets-demote)<cr>", defaultKeymapOpts)
+vim.keymap.set("n", "<leader><", "<Plug>(bullets-promote)<cr>", defaultKeymapOpts)
+vim.keymap.set("v", "<leader><", "<Plug>(bullets-promote)<cr>", defaultKeymapOpts)
