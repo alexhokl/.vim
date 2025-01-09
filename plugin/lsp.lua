@@ -37,9 +37,37 @@ require("cmp_nvim_ultisnips").setup {}
 
 local nvim_lsp = require('lspconfig')
 local cmp = require 'cmp'
-local lspkind = require('lspkind')
+-- local lspkind = require('lspkind')
 local mason_config = require("mason-lspconfig")
 local nvim_lsp_configs = require("lspconfig.configs")
+
+local code_types = {
+	Class = ' ',
+	Color = ' ',
+	Constant = ' ',
+	Constructor = ' ',
+	Enum = ' ',
+	EnumMember = ' ',
+	Event = ' ',
+	Field = ' ',
+	File = ' ',
+	Folder = ' ',
+	Function = ' ',
+	Interface = ' ',
+	Keyword = ' ',
+	Method = ' ',
+	Module = ' ',
+	Operator = ' ',
+	Property = ' ',
+	Reference = ' ',
+	Snippet = ' ',
+	Struct = ' ',
+	Text = ' ',
+	TypeParameter = ' ',
+	Unit = ' ',
+	Value = ' ',
+	Variable = ' ',
+}
 
 cmp.setup({
 	snippet = {
@@ -76,18 +104,33 @@ cmp.setup({
 		-- { name = 'cmp_ai' }, -- promising but the suggestions are not that great yet
 	},
 	formatting = {
-		format = lspkind.cmp_format({
-			with_text = true,
-			menu = {
+		format = function(entry, vim_item)
+			-- Set `kind` to "$icon $kind".
+			vim_item.kind = string.format('%s %s', code_types[vim_item.kind], vim_item.kind)
+			vim_item.menu = ({
 				nvim_lsp = "",
 				treesitter = "",
 				path = "",
 				-- spell = "󰓆",
 				buffer = "",
 				Ollama = "🦙",
-			},
-			maxwidth = 50,
-		})
+			})[entry.source.name]
+			vim_item.maxwidth = 50
+			return vim_item
+		end,
+
+		-- format = lspkind.cmp_format({
+		-- 	with_text = true,
+		-- 	menu = {
+		-- 		nvim_lsp = "",
+		-- 		treesitter = "",
+		-- 		path = "",
+		-- 		-- spell = "󰓆",
+		-- 		buffer = "",
+		-- 		Ollama = "🦙",
+		-- 	},
+		-- 	maxwidth = 50,
+		-- })
 	}
 })
 
