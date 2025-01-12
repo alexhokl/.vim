@@ -1,16 +1,25 @@
 local plugin = require("nvim-md-open-link")
 plugin.setup()
 
-local function refreshMarkdownTopics()
+local function refreshMarkdownTopics(depth)
 	vim.cmd('/___')
 	vim.cmd('normal! kVggddd')
-	vim.cmd(':r !markdown-toc --maxdepth 3 %')
+	vim.cmd(':r !markdown-toc --maxdepth ' .. depth .. ' %')
 	vim.cmd('normal! ppDggdd')
+end
+
+local function refreshMarkdownTopics3Levels()
+	refreshMarkdownTopics(3)
+end
+
+local function refreshMarkdownTopics4Levels()
+	refreshMarkdownTopics(4)
 end
 
 local defaultKeymapOpts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>rm", refreshMarkdownTopics, defaultKeymapOpts)
+vim.keymap.set("n", "<leader>rm", refreshMarkdownTopics3Levels, defaultKeymapOpts)
+vim.keymap.set("n", "<leader>rrm", refreshMarkdownTopics4Levels, defaultKeymapOpts)
 
 -- add a code block
 vim.keymap.set("n", "<leader>co", function()
