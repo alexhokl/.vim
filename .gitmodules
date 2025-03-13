@@ -271,3 +271,6 @@
 [submodule "bundle/collama.nvim"]
 	path = bundle/collama.nvim
 	url = https://github.com/yuys13/collama.nvim
+[submodule "bundle/diffview.nvim"]
+	path = bundle/diffview.nvim
+	url = https://github.com/sindrets/diffview.nvim
