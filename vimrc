@@ -1156,13 +1156,13 @@ endif
 " =================== lspsaga.nvim =========================
 if has('nvim')
 " lsp provider to find the cursor word definition and reference
-nnoremap <silent> gr :Telescope lsp_references<CR>
+" nnoremap <silent> gr :Telescope lsp_references<CR>
 
 " " preview definition
 " nnoremap <silent> gd :Lspsaga preview_definition<CR>
 
 " rename
-nnoremap <silent> <leader>rn :Lspsaga rename<CR>
+" nnoremap <silent> <leader>rn :Lspsaga rename<CR>
 
 " show signature help
 nnoremap <silent><leader>k :Lspsaga signature_help<CR>
@@ -1175,8 +1175,8 @@ nnoremap <silent>K :Lspsaga hover_doc<CR>
 " nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 
 " code action
-nnoremap <silent><leader>ca :Lspsaga code_action<CR>
-vnoremap <silent><leader>ca :Lspsaga range_code_action<CR>
+" nnoremap <silent><leader>ca :Lspsaga code_action<CR>
+" vnoremap <silent><leader>ca :Lspsaga range_code_action<CR>
 
 " " float terminal also you can pass the cli command in open_float_terminal function
 " nnoremap <silent> <C-t> :Lspsaga open_floaterm<CR>
