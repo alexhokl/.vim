@@ -274,3 +274,6 @@
 [submodule "bundle/diffview.nvim"]
 	path = bundle/diffview.nvim
 	url = https://github.com/sindrets/diffview.nvim
+[submodule "bundle/gen.nvim"]
+	path = bundle/gen.nvim
+	url = https://github.com/David-Kunz/gen.nvim
