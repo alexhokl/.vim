@@ -277,3 +277,6 @@
 [submodule "bundle/gen.nvim"]
 	path = bundle/gen.nvim
 	url = https://github.com/David-Kunz/gen.nvim
+[submodule "bundle/hbac.nvim"]
+	path = bundle/hbac.nvim
+	url = https://github.com/axkirillov/hbac.nvim
