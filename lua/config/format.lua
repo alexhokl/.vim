@@ -12,7 +12,7 @@ require("conform").setup({
 		javascript = { "biome-organize-imports", "biome" },
 		json = { "jq" },
 		jsx = { "biome-organize-imports", "biome" },
-		lua = { "stylua" }, -- needs stylua in $PATH
+		lua = { "stylua" },               -- needs stylua in $PATH
 		python = { "ruff_format", "ruff_fix" }, -- needs ruff in $PATH
 		nix = { "alejandra" },
 		markdown = { "mdformat" },
