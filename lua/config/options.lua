@@ -52,7 +52,8 @@ vim.opt.spelllang = { "en_gb" }
 vim.opt.makeprg = 'task'
 
 if vim.fn.has('folding') == 1 then
-  vim.o.foldmethod = 'indent'
+  vim.o.foldmethod = 'expr'
+  vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
   vim.o.foldlevel = 99
   vim.o.foldlevelstart = 99
 end
