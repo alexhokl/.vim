@@ -13,7 +13,3 @@ My vim dot files.
 - `Ctrl-Z`: Switch to the previous buffer
 
 There's a lot more if you hit `,` you can peruse all the ones connected to the leader `,`
-
-## Known issues
-
-- overlapping features for resolving git conflict (gitconflict vs diffview.nvim)

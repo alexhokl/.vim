@@ -29,6 +29,16 @@ return {
         prev = 'cp',
       },
     },
+    cmd = {
+      "GitConflictChooseOurs",
+      "GitConflictChooseTheirs",
+      "GitConflictChooseBoth",
+      "GitConflictChooseNone",
+      "GitConflictNextConflict",
+      "GitConflictPrevConflict",
+      "GitConflictListQf",
+      "GitConflictRefresh",
+    },
     keys = {
       { 'gcf', '<CMD>GitConflictListQf<CR>', desc = "List conflicts", silent = true, noremap = true },
     },
@@ -48,6 +58,9 @@ return {
   {
     "sindrets/diffview.nvim",
     opts = {
+      merge_tool = {
+        layout = "diff4_mixed",
+      },
       keymaps = {
         file_panel = {
           { "n", "<C-c>", "<CMD>DiffviewClose<CR>", desc = "Close diffview" },
@@ -56,6 +69,14 @@ return {
           { "n", "<C-c>", "<CMD>DiffviewClose<CR>", desc = "Close diffview" },
         },
       },
+    },
+    cmd = {
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewToggleFiles",
+      "DiffviewFocusFiles",
+      "DiffviewRefresh",
+      "DiffviewFileHistory",
     },
     keys = {
       { "<leader>glf", "<CMD>DiffviewFileHistory<CR>",  mode = "n", desc = "File history",    silent = true, noremap = true },
