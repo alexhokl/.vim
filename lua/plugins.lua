@@ -409,34 +409,6 @@ return {
       local lspkind = require("lspkind")
       require("luasnip.loaders.from_vscode").lazy_load() -- Load VSCode-style snippets from friendly-snippets
 
-      local code_types = {
-        Class = ' ',
-        Color = ' ',
-        Constant = ' ',
-        Constructor = ' ',
-        Enum = ' ',
-        EnumMember = ' ',
-        Event = ' ',
-        Field = ' ',
-        File = ' ',
-        Folder = ' ',
-        Function = ' ',
-        Interface = ' ',
-        Keyword = ' ',
-        Method = ' ',
-        Module = ' ',
-        Operator = ' ',
-        Property = ' ',
-        Reference = ' ',
-        Snippet = ' ',
-        Struct = ' ',
-        Text = ' ',
-        TypeParameter = ' ',
-        Unit = ' ',
-        Value = ' ',
-        Variable = ' ',
-      }
-
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -460,7 +432,7 @@ return {
           }),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
+          -- { name = "nvim_lsp" },
           { name = "luasnip",              keyword_length = 2 },
           { name = "path" },
           { name = "buffer",               keyword_length = 5 },
