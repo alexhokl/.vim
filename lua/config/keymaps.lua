@@ -62,8 +62,8 @@ map("n", "<leader><Left>", "<CMD>vertical resize -5<CR>", "Decrease horizontal s
 map("n", "<leader><Right>", "<CMD>vertical resize +5<CR>", "Increase horizontal size by 5")
 
 -- move visually selected blocks
-map({ "n", "x" }, "]e", ":move '>+1<CR>gv-gv", "Move block down")
-map({ "n", "x" }, "[e", ":move '<-2<CR>gv-gv", "Move block up")
+map("x", "]e", ":move '>+1<CR>gv-gv", "Move block down")
+map("x", "[e", ":move '<-2<CR>gv-gv", "Move block up")
 
 -- change default behaviour of * and #
 map("n", "*", ":let @/='\\v<' . expand('<cword>') . '>'<CR>:let v:searchforward=1<cr>n", "Find current word below")
