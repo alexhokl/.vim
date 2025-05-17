@@ -16,6 +16,4 @@ There's a lot more if you hit `,` you can peruse all the ones connected to the l
 
 ## Known issues
 
-- `tabstop` of filetype `markdown` is set to `4` somehow
-- auto-wrapping does not work for markdown files
 - overlapping features for resolving git conflict (gitconflict vs diffview.nvim)

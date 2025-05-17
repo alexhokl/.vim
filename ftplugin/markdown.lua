@@ -62,6 +62,16 @@ for i = 1, 6 do
   end, "Set markdown header level " .. i)
 end
 
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*.md",
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+  end,
+})
+
+vim.bo.textwidth = 80
+
 vim.g.tex_conceal = ""
 vim.g.vim_markdown_math = 1
 vim.g.vim_markdown_new_list_item_indent = 2 -- default: 4
