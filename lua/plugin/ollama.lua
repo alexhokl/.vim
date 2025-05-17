@@ -25,7 +25,8 @@ return {
         desc = 'Collama: Accept suggestion',
       }
       vim.keymap.set('i', '<C-s>', require('collama.copilot').accept, keymap_options)
-      require('collama.logger').notify = require('fidget').notify
+      -- require('collama.logger').notify = require('fidget').notify
+      require('collama.logger').notify = require("noice.source.notify").notify
 
       -- debugging options
       -- require('collama.logger').notify = require('notify').notify
