@@ -478,7 +478,18 @@ return {
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
-        suggestion = { auto_trigger = true, keymap = { accept = "<Tab>" } },
+        suggestion = {
+          auto_trigger = true,
+          keymap = {
+            accept = "<Tab>"
+          }
+        },
+        filetypes = {
+          yaml = true,
+          markdown = true,
+          gitcommit = true,
+          gitrebase = true,
+        },
       })
     end,
   },
