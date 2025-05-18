@@ -1,17 +1,7 @@
-local function refreshMarkdownTopics(depth)
-  vim.cmd('/___')
-  vim.cmd('normal! kVggddd')
-  vim.cmd(':r !markdown-toc --maxdepth ' .. depth .. ' %')
-  vim.cmd('normal! ppDggdd')
-end
-
 -- Utility function for mapping keys
 local map = function(mode, keys, command, desc)
   vim.keymap.set(mode, keys, command, { noremap = true, silent = true, desc = desc })
 end
-
-map("n", "<leader>rm", function() refreshMarkdownTopics(3) end, "Refresh markdown topics to level 3 headers")
-map("n", "<leader>rrm", function() refreshMarkdownTopics(4) end, "Refresh markdown topics to level 4 headers")
 
 -- add a code block
 map("n", "<leader>co", function()
