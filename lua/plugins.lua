@@ -91,6 +91,13 @@ return {
         desc = "Find methods/functions",
       },
       {
+        "<leader>ft",
+        function()
+          require("nvim-md-header-telescope-picker").markdown_header_picker({})
+        end,
+        desc = "Find headers",
+      },
+      {
         "<leader>fh",
         function()
           require("telescope.builtin").help_tags()

@@ -12,6 +12,10 @@ return {
   },
 
   {
+    "alexhokl/nvim-md-header-telescope-picker",
+  },
+
+  {
     "godlygeek/tabular",
   },
 
