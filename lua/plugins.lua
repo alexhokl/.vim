@@ -72,6 +72,13 @@ return {
         desc = "Find methods/functions",
       },
       {
+        "<leader>ft",
+        function()
+          require("nvim-md-header-telescope-picker").markdown_header_picker({})
+        end,
+        desc = "Find headers",
+      },
+      {
         "<leader>fh",
         function()
           require("telescope.builtin").help_tags()
@@ -133,6 +140,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
+      "alexhokl/nvim-md-header-telescope-picker",
     },
     config = function()
       local trouble = require("trouble.sources.telescope")
