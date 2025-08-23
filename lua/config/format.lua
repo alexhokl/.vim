@@ -17,7 +17,7 @@ require("conform").setup({
     lua = { "stylua" },                     -- needs stylua in $PATH
     python = { "ruff_format", "ruff_fix" }, -- needs ruff in $PATH
     nix = { "alejandra" },
-    markdown = { "mdformat" },
+    -- markdown = { "mdformat" },
     rust = { "rustfmt", lsp_format = "fallback" },
     terraform = { "terraform_fmt" },
     toml = { "taplo" },
