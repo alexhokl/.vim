@@ -16,7 +16,7 @@ return {
     "rcarriga/nvim-notify",
     dependencies = { "nvim-telescope/telescope.nvim" },
     opts = {
-      timeout = 5000,
+      timeout = 3000,
     },
     config = function(_, opts)
       local notify = require("notify")
