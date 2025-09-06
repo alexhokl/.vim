@@ -213,19 +213,19 @@ return {
           },
 
           -- :Telescope live_grep
-          live_grep = {
-            additional_args = function()
-              return {
-                "--hidden",
-                "--glob",
-                "!.git/*",
-                "--glob",
-                ".github/**",
-                "--exclude",
-                "docs/html/**",
-              }
-            end,
-          },
+          -- live_grep = {
+          --   additional_args = function()
+          --     return {
+          --       "--hidden",
+          --       "--glob",
+          --       "!.git/*",
+          --       "--glob",
+          --       ".github/**",
+          --       "--exclude",
+          --       "docs/html/**",
+          --     }
+          --   end,
+          -- },
         },
       })
       telescope.load_extension("ui-select")
