@@ -8,26 +8,29 @@ return {
   {
     "folke/trouble.nvim",
     dependencies = { "folke/todo-comments.nvim" },
-    config = function()
-      local trouble = require("trouble")
-      trouble.setup()
-      -- Utility function for mapping keys
-      local map = function(mode, keys, command, desc)
-        vim.keymap.set(mode, keys, command, { noremap = true, silent = true, desc = desc })
-      end
-
-      local toggle = function(mode)
-        trouble.toggle({
-          mode = mode,
-          focus = true,
-        })
-      end
-
-
-      map("n", "<leader>tr", function() toggle('lsp_references') end, "Toggle references (trouble)")
-      map("n", "<leader>td", function() toggle('diagnostics') end, "Toggle diagnostics (trouble)")
-      map("n", "<leader>tt", function() toggle('todo') end, "Toggle todo (trouble)")
-    end,
+    opts = {},
+    keys = {
+      {
+        "<leader>tr",
+        function() require("trouble").toggle("lsp_references") end,
+        desc = "Toggle references",
+      },
+      {
+        "<leader>tdr",
+        function() require("trouble").toggle("diagnostics") end,
+        desc = "Toggle diagnostics (repository)",
+      },
+      {
+        "<leader>tdf",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Toggle diagnostics (buffer)",
+      },
+      {
+        "<leader>tt",
+        function() require("trouble").toggle("todo") end,
+        desc = "Toggle todo",
+      },
+    },
   },
 
 }
