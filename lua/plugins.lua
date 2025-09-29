@@ -395,6 +395,7 @@ return {
         "powershell_es",
         "pyright",
         -- "roslyn_ls",
+        "roslyn",
         "rust_analyzer",
         "lua_ls",
         "sqls",
