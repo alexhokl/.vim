@@ -8,9 +8,10 @@ require("conform").setup({
     lsp_format = "fallback",
   },
   formatters_by_ft = {
-    -- cs = { "csharpier" },
+    cs = { "roslyn" },
     d2 = { "d2" },
     go = { "goimports", "gofumpt" }, -- fallback chain
+    hcl = { "terraform_fmt" },
     javascript = { "biome-organize-imports", "biome" },
     json = { "jq" },
     jsx = { "biome-organize-imports", "biome" },
@@ -20,6 +21,7 @@ require("conform").setup({
     -- markdown = { "mdformat" },
     rust = { "rustfmt", lsp_format = "fallback" },
     terraform = { "terraform_fmt" },
+    ["terraform-vars"] = { "terraform_fmt" },
     toml = { "taplo" },
     tsx = { "biome-organize-imports", "biome" },
     typescript = { "biome-organize-imports", "biome" },

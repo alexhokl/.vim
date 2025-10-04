@@ -369,16 +369,6 @@ return {
       -- to view logs use `:lua vim.cmd('e'..vim.lsp.get_log_path())`
       -- vim.lsp.set_log_level("debug")
 
-      local format_on_save_filetypes = {
-        "*.tf",
-        "*.tfvars",
-        "*.go",
-        "*.rs",
-        "*.lua",
-        "*.py",
-        "*.cs",
-      }
-
       local enabled_lsp_clients = {
         "bashls",
         "clangd",
@@ -391,10 +381,8 @@ return {
         "html",
         "jsonls",
         "ocamllsp",
-        -- "omnisharp",
         "powershell_es",
         "pyright",
-        -- "roslyn_ls",
         "roslyn",
         "rust_analyzer",
         "lua_ls",
@@ -404,27 +392,6 @@ return {
         "vimls",
         "yamlls",
       }
-
-      -- enable formatting on save
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = format_on_save_filetypes,
-        callback = function()
-          vim.lsp.buf.format();
-        end,
-      })
-
-      -- enable auto-completion
-      vim.api.nvim_create_autocmd("LspAttach", {
-        callback = function(ev)
-          local client = vim.lsp.get_client_by_id(ev.data.client_id)
-          if not client then
-            return
-          end
-          if client:supports_method("textDocument/completion") then
-            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-          end
-        end,
-      })
 
       -- enable LSP clients
       vim.lsp.enable(enabled_lsp_clients)
@@ -507,7 +474,7 @@ return {
           }),
         }),
         sources = cmp.config.sources({
-          -- { name = "nvim_lsp" },
+          { name = "nvim_lsp" },
           { name = "luasnip",              keyword_length = 2 },
           { name = "path" },
           { name = "buffer",               keyword_length = 5 },
