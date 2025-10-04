@@ -34,6 +34,7 @@ return {
 
   {
     "nanotee/sqls.nvim",
+    opts = {},
     keys = {
       { "<leader>ds",   "<cmd>SqlsSwitchConnection<CR>",    mode = "n", desc = "Switch database connection (sqls)",    noremap = true, silent = true },
       { "<leader>dd",   "<cmd>SqlsSwitchDatabase<CR>",      mode = "n", desc = "Switch database (sqls)",               noremap = true, silent = true },
