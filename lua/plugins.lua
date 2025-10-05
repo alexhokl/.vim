@@ -373,7 +373,6 @@ return {
         "bashls",
         "clangd",
         "cmake",
-        "copilot",
         -- "csharp_ls",
         "docker_compose_language_service",
         "dockerls",
