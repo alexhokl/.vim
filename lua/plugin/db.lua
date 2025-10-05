@@ -34,6 +34,7 @@ return {
 
   {
     "nanotee/sqls.nvim",
+    ft = { "sql", "mysql", "plsql" },
     opts = {},
     keys = {
       { "<leader>ds",   "<cmd>SqlsSwitchConnection<CR>",    mode = "n", desc = "Switch database connection (sqls)",    noremap = true, silent = true },
