@@ -20,26 +20,16 @@ return {
 
   {
     "akinsho/git-conflict.nvim",
-    version = "*",
-    config = true,
-    cmd = {
-      "GitConflictChooseOurs",
-      "GitConflictChooseTheirs",
-      "GitConflictChooseBoth",
-      "GitConflictChooseNone",
-      "GitConflictNextConflict",
-      "GitConflictPrevConflict",
-      "GitConflictListQf",
-      "GitConflictRefresh",
-    },
-    keys = {
-      { 'gcf', '<CMD>GitConflictListQf<CR>',             desc = "List conflicts",            silent = true, noremap = true },
-      { 'co',  '<Plug>(git-conflict-ours)',              desc = "Choose ours",               silent = true, noremap = true },
-      { 'ct',  '<Plug>(git-conflict-theirs)',            desc = "Choose theirs",             silent = true, noremap = true },
-      { 'cb',  '<Plug>(git-conflict-both)',              desc = "Choose both",               silent = true, noremap = true },
-      { 'c0',  '<Plug>(git-conflict-none)',              desc = "Choose none",               silent = true, noremap = true },
-      { ']n',  '<Plug>(git-conflict-next-conflict)',     desc = "Jump to next conflict",     silent = true, noremap = true },
-      { '[n',  '<Plug>(git-conflict-previous-conflict)', desc = "Jump to previous conflict", silent = true, noremap = true },
+    lazy = false,
+    opts = {
+      default_mappings = {
+        -- ours = 'co',
+        -- theirs = 'ct',
+        -- both = 'cb',
+        -- none = 'c0',
+        next = ']n',
+        prev = '[n',
+      },
     },
   },
 
