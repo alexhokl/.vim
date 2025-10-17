@@ -96,3 +96,6 @@ local toggle_relative_number = function()
   vim.opt.relativenumber = not vim.opt.relativenumber:get()
 end
 map('n', '<leader>rn', toggle_relative_number, "Toggle relative number")
+
+-- show diagnostics in qickfix list
+map("n", "<leader>tdq", vim.diagnostic.setqflist, "Show diagnostics in quickfix list")
