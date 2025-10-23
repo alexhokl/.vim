@@ -46,4 +46,13 @@ return {
     end
   },
 
+  {
+    "alexhokl/nvim-web-search",
+    opts = {
+      keymaps = {
+        ["ji"] = "https://jisho.org/search/{}",
+      },
+    },
+  },
+
 }
