@@ -391,6 +391,7 @@ return {
         "tflint",
         "vimls",
         "yamlls",
+        "zls",
       }
 
       -- enable LSP clients
