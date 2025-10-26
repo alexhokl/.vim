@@ -49,7 +49,10 @@ return {
   {
     "alexhokl/nvim-web-search",
     opts = {
-      keymaps = {
+      visual_mode_keymaps = {
+        ["ji"] = "https://jisho.org/search/{}",
+      },
+      normal_mode_keymaps = {
         ["ji"] = "https://jisho.org/search/{}",
       },
     },
