@@ -99,3 +99,7 @@ map('n', '<leader>rn', toggle_relative_number, "Toggle relative number")
 
 -- show diagnostics in qickfix list
 map("n", "<leader>tdq", vim.diagnostic.setqflist, "Show diagnostics in quickfix list")
+
+-- avoid un-necessary modifications of registers
+map("n", "x", '"_x', "Delete character without yanking")
+map("n", "c", '"_c', "Change without yanking")
