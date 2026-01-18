@@ -81,4 +81,15 @@ return {
     },
   },
 
+  {
+    "ParthSareen/vimollama",
+    config = function()
+      vim.g.ollama_model = "devstral-small-2:24b" -- required
+    end,
+    keys = {
+      { "<leader>k", mode = "v",           desc = "Ollama Edit" },
+      { "<leader>K", mode = "v",           desc = "Ollama Chat" },
+      { "<leader>M", desc = "Ollama Model" },
+    },
+  }
 }
