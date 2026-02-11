@@ -51,6 +51,8 @@ return {
     opts = {
       visual_mode_keymaps = {
         ["<leader>ji"] = "https://jisho.org/search/{}",
+        ["<leader>jt"] = "https://translate.google.com/?sl=ja&tl=en&op=translate&text={}",
+        ["<leader>go"] = "https://www.google.com/search?q={}",
       },
       normal_mode_keymaps = {
         ["<leader>ji"] = "https://jisho.org/search/{}",
