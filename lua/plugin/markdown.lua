@@ -60,4 +60,11 @@ return {
     },
   },
 
+  {
+    "alexhokl/nvim-kanji-to-hiragana",
+    -- dir = "/nvim-kanji-to-hiragana/",
+    ft = "markdown",
+    opts = {},
+  },
+
 }
