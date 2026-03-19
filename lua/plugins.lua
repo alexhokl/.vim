@@ -348,7 +348,7 @@ return {
     dependencies = {
       -- LSP UI enhancements
       { "nvimdev/lspsaga.nvim", config = true }, -- LSP UIs (hover docs, code actions, rename, diagnostics, and floating terminal)
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       "quangnguyen30192/cmp-nvim-ultisnips",
       -- Automatically install LSP servers (optional, e.g., mason.nvim could be used here)
     },
