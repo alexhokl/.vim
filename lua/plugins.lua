@@ -349,7 +349,6 @@ return {
       -- LSP UI enhancements
       { "nvimdev/lspsaga.nvim", config = true }, -- LSP UIs (hover docs, code actions, rename, diagnostics, and floating terminal)
       "mason-org/mason.nvim",
-      "quangnguyen30192/cmp-nvim-ultisnips",
       -- Automatically install LSP servers (optional, e.g., mason.nvim could be used here)
     },
     config = function()
@@ -482,7 +481,6 @@ return {
           { name = 'treesitter' },
           { name = 'cmdline' },
           { name = 'git' },
-          { name = 'ultisnips' },
           { name = 'vim-dadbod-completion' },
           -- { name = 'cmp_ai' }, -- promising but the suggestions are not that great yet
         }),
