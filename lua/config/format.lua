@@ -8,7 +8,7 @@ require("conform").setup({
     lsp_format = "fallback",
   },
   formatters_by_ft = {
-    cs = { "roslyn" },
+    cs = { lsp_format = "prefer" }, -- roslyn LSP handles formatting
     d2 = { "d2" },
     go = { "goimports", "gofumpt" }, -- fallback chain
     hcl = { "terraform_fmt" },
@@ -30,8 +30,14 @@ require("conform").setup({
     -- have other formatters configured.
     ["_"] = { "trim_whitespace" },
   },
-  -- extra-exe overrides (binary names differ on Nix sometimes):
+  -- extra-exe overrides: absolute paths so Neovim finds them regardless of $PATH
   formatters = {
-    alejandra = { command = "alejandra", args = { "--quiet", "-" } },
+    alejandra = { command = "/opt/homebrew/bin/alejandra", args = { "--quiet", "-" } },
+    biome = { command = "/opt/homebrew/bin/biome" },
+    d2 = { command = "/opt/homebrew/bin/d2" },
+    gofumpt = { command = vim.uv.os_homedir() .. "/git/bin/gofumpt" },
+    ruff = { command = "/opt/homebrew/bin/ruff" },
+    stylua = { command = "/opt/homebrew/bin/stylua" },
+    taplo = { command = "/opt/homebrew/bin/taplo" },
   },
 })
