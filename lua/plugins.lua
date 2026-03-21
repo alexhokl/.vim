@@ -556,107 +556,109 @@ return {
   },
 
   -- Syntax and Language Support (Tree-sitter and filetype plugins)
+  -- NOTE: nvim-treesitter was fully rewritten; the old `configs` module and
+  -- `ts_utils` no longer exist. Setup is minimal — just install_dir.
+  -- Highlighting, folding, and indentation are enabled via a FileType autocmd
+  -- below using Neovim's built-in treesitter APIs.
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = {
-      "ziontee113/syntax-tree-surfer",
-    },
+    lazy = false, -- the rewrite does not support lazy-loading
+    build = ":TSUpdate", -- update parsers when the plugin itself is updated
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "bash",
-          "c",
-          "c_sharp",
-          "cmake",
-          "cpp",
-          "css",
-          "csv",
-          "dart",
-          "diff",
-          "dockerfile",
-          "gitcommit",
-          "gitignore",
-          "go",
-          "gomod",
-          "hcl",
-          "hjson",
-          "html",
-          "http",
-          "java",
-          "javascript",
-          "jinja",
-          "jsdoc",
-          "json",
-          "json5",
-          "jsonc",
-          "kotlin",
-          "latex",
-          "lua",
-          "make",
-          "markdown",
-          "markdown_inline",
-          "ninja",
-          "nginx",
-          "nix",
-          "python",
-          "proto",
-          "python",
-          "query",
-          "regex",
-          "ruby",
-          "rust",
-          "scala",
-          "scss",
-          "terraform",
-          "toml",
-          "tsx",
-          "typescript",
-          "vim",
-          "yaml",
-        },
-        highlight = { enable = true },
-        indent = { enable = true },
-        query_linter = { enable = true },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-          },
-          move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = "@class.outer",
-            },
-            goto_next_end = {
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer",
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer",
-            },
-          },
-          lsp_interop = {
-            enable = true,
-            border = 'none',
-            peek_definition_code = {
-              ["<leader>df"] = "@function.outer",
-              ["<leader>dF"] = "@class.outer",
-            },
-          },
-        },
-        modules = {},
-        sync_install = false,
-        auto_install = true,
-        ignore_install = {},
+      -- The new nvim-treesitter rewrite stores its query files under
+      -- runtime/queries/ instead of queries/ at the plugin root.  Neovim's
+      -- rtp resolution only looks for queries/ directly under each rtp entry,
+      -- so we must explicitly add the runtime/ subdirectory.
+      local ts_runtime = vim.fn.stdpath("data") .. "/lazy/nvim-treesitter/runtime"
+      vim.opt.rtp:prepend(ts_runtime)
+
+      -- Install any parsers from our desired list that are not yet present
+      -- in the user's install_dir (site/). The bundled parsers inside the
+      -- plugin directory are often older than the query files require, causing
+      -- "Invalid field name" errors. Installing via nvim-treesitter compiles
+      -- up-to-date parsers and places them in site/ which takes rtp priority.
+      local desired = {
+        "bash",
+        "c",
+        "c_sharp",
+        "cmake",
+        "cpp",
+        "css",
+        "csv",
+        "dart",
+        "diff",
+        "dockerfile",
+        "gitcommit",
+        "gitignore",
+        "go",
+        "gomod",
+        "hcl",
+        "hjson",
+        "html",
+        "http",
+        "java",
+        "javascript",
+        "jinja",
+        "jsdoc",
+        "json",
+        "json5",
+        "jsonc",
+        "kotlin",
+        "latex",
+        "lua",
+        "make",
+        "markdown",
+        "markdown_inline",
+        "ninja",
+        "nginx",
+        "nix",
+        "proto",
+        "python",
+        "query",
+        "regex",
+        "ruby",
+        "rust",
+        "scala",
+        "scss",
+        "terraform",
+        "toml",
+        "tsx",
+        "typescript",
+        "vim",
+        "yaml",
+      }
+
+      local installed = require("nvim-treesitter").get_installed("parsers")
+      local installed_set = {}
+      for _, lang in ipairs(installed) do
+        installed_set[lang] = true
+      end
+
+      local missing = {}
+      for _, lang in ipairs(desired) do
+        if not installed_set[lang] then
+          table.insert(missing, lang)
+        end
+      end
+
+      if #missing > 0 then
+        -- Run asynchronously so startup is not blocked
+        require("nvim-treesitter").install(missing)
+      end
+
+      -- Enable treesitter highlighting, indentation, and folding for all
+      -- filetypes that have a parser installed. Neovim's built-in
+      -- vim.treesitter.start() replaces the old highlight.enable table.
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("treesitter_ft", { clear = true }),
+        callback = function()
+          local ok = pcall(vim.treesitter.start)
+          if not ok then
+            return
+          end
+          -- indentation (nvim-treesitter provides indentexpr)
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
       })
     end,
   },

@@ -72,6 +72,73 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
+    config = function()
+      require("nvim-treesitter-textobjects").setup({
+        select = {
+          lookahead = true,
+          selection_modes = {
+            ["@function.outer"] = "V",
+            ["@class.outer"] = "V",
+          },
+          include_surrounding_whitespace = false,
+        },
+        move = {
+          set_jumps = true,
+        },
+      })
+
+      local move = require("nvim-treesitter-textobjects.move")
+      local select = require("nvim-treesitter-textobjects.select")
+
+      local map = function(mode, lhs, rhs, desc)
+        vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
+      end
+
+      --- Move: functions -------------------------------------------------------
+      map({ "n", "x", "o" }, "]m", function()
+        move.goto_next_start("@function.outer", "textobjects")
+      end, "Next function start")
+      map({ "n", "x", "o" }, "]M", function()
+        move.goto_next_end("@function.outer", "textobjects")
+      end, "Next function end")
+      map({ "n", "x", "o" }, "[m", function()
+        move.goto_previous_start("@function.outer", "textobjects")
+      end, "Previous function start")
+      map({ "n", "x", "o" }, "[M", function()
+        move.goto_previous_end("@function.outer", "textobjects")
+      end, "Previous function end")
+
+      --- Move: classes ---------------------------------------------------------
+      map({ "n", "x", "o" }, "]]", function()
+        move.goto_next_start("@class.outer", "textobjects")
+      end, "Next class start")
+      map({ "n", "x", "o" }, "][", function()
+        move.goto_next_end("@class.outer", "textobjects")
+      end, "Next class end")
+      map({ "n", "x", "o" }, "[[", function()
+        move.goto_previous_start("@class.outer", "textobjects")
+      end, "Previous class start")
+      map({ "n", "x", "o" }, "[]", function()
+        move.goto_previous_end("@class.outer", "textobjects")
+      end, "Previous class end")
+
+      --- Select ----------------------------------------------------------------
+      map({ "x", "o" }, "af", function()
+        select.select_textobject("@function.outer", "textobjects")
+      end, "Outer function")
+      map({ "x", "o" }, "if", function()
+        select.select_textobject("@function.inner", "textobjects")
+      end, "Inner function")
+      map({ "x", "o" }, "ac", function()
+        select.select_textobject("@class.outer", "textobjects")
+      end, "Outer class")
+      map({ "x", "o" }, "ic", function()
+        select.select_textobject("@class.inner", "textobjects")
+      end, "Inner class")
+
+      -- Note: lsp_interop (peek_definition_code / <leader>df, <leader>dF) was
+      -- removed in the nvim-treesitter-textobjects rewrite and has no replacement.
+    end,
   },
 
   {

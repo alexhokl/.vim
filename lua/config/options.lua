@@ -53,7 +53,9 @@ vim.opt.makeprg = 'task'
 
 if vim.fn.has('folding') == 1 then
   vim.o.foldmethod = 'expr'
-  vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+  -- nvim_treesitter#foldexpr() was removed in the nvim-treesitter rewrite;
+  -- use Neovim's built-in treesitter fold expression instead.
+  vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
   vim.o.foldlevel = 99
   vim.o.foldlevelstart = 99
 end
