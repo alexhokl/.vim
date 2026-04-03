@@ -4,7 +4,7 @@ return {
 
     -- Utility function for mapping keys
     local map = function(mode, keys, command, desc, buff)
-      vim.keymap.set(mode, keys, command, { noremap = true, silent = true, desc = desc, buffer = buff })
+      vim.keymap.set(mode, keys, command, { noremap = true, silent = true, desc = desc, buf = buff })
     end
 
     if client.server_capabilities.documentFormattingProvider then

@@ -3,7 +3,7 @@ local setup_config = yaml_companion.setup()
 
 -- Utility function for mapping keys
 local map = function(mode, keys, command, desc, bufnr)
-  vim.keymap.set(mode, keys, command, { noremap = true, silent = true, desc = desc, buffer = bufnr })
+  vim.keymap.set(mode, keys, command, { noremap = true, silent = true, desc = desc, buf = bufnr })
 end
 
 setup_config.on_attach = function(client, bufnr)
