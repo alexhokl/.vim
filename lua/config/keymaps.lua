@@ -122,6 +122,6 @@ map("n", "c", '"_c', "Change without yanking")
 local copy_file_path = function()
 	local path = vim.fn.expand("%:p")
 	vim.fn.setreg("+", path)
-	print("Copied path: " .. path)
+	vim.notify("Copied path: " .. path, vim.log.levels.INFO)
 end
 map("n", "<leader>fp", copy_file_path, "Copy current file path")
