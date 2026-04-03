@@ -1,6 +1,6 @@
-vim.bo.ts = 4
-vim.bo.sw = 4
-vim.bo.sts = 4
+vim.bo.tabstop = 4
+vim.bo.shiftwidth = 4
+vim.bo.softtabstop = 4
 vim.bo.expandtab = true
 
 -- set colourcolumn for cs files on file open

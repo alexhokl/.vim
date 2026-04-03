@@ -1,8 +1,8 @@
 local setLocal = function()
-	vim.bo.ts = 2
-	vim.bo.sw = 2
-	vim.bo.sts = 2
-	vim.bo.noexpandtab = true
+	vim.bo.tabstop = 2
+	vim.bo.shiftwidth = 2
+	vim.bo.softtabstop = 2
+	vim.bo.expandtab = false
 end
 
 local group_id = vim.api.nvim_create_augroup("make", { clear = true })
