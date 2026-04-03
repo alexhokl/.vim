@@ -12,12 +12,12 @@ return {
     keys = {
       {
         "<leader>tr",
-        function() require("trouble").toggle("lsp_references") end,
+        "<cmd>Trouble lsp_references toggle<cr>",
         desc = "Toggle references",
       },
       {
         "<leader>tdr",
-        function() require("trouble").toggle("diagnostics") end,
+        "<cmd>Trouble diagnostics toggle<cr>",
         desc = "Toggle diagnostics (repository)",
       },
       {
@@ -27,7 +27,7 @@ return {
       },
       {
         "<leader>tt",
-        function() require("trouble").toggle("todo") end,
+        "<cmd>Trouble todo toggle<cr>",
         desc = "Toggle todo",
       },
     },
