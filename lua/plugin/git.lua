@@ -39,8 +39,7 @@ return {
     config = function()
       local git_worktree = require('git-worktree')
       git_worktree.setup()
-      local telescope = package.loaded.telescope
-      telescope.load_extension("git_worktree")
+      require("telescope").load_extension("git_worktree")
     end,
   },
 

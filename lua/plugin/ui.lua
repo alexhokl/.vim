@@ -21,8 +21,7 @@ return {
     config = function(_, opts)
       local notify = require("notify")
       notify.setup(opts)
-      local telescope = package.loaded.telescope
-      telescope.load_extension("notify")
+      require("telescope").load_extension("notify")
     end,
   },
 
