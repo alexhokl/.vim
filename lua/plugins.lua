@@ -426,9 +426,6 @@ return {
         },
       },
     },
-    init = function()
-      table.insert(require("cmp").get_config().sources, { name = "git" })
-    end,
   },
   {
     "hrsh7th/nvim-cmp",
