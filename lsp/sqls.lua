@@ -17,9 +17,6 @@ return {
     map("n", "]d", "<CMD>Lspsaga diagnostic_jump_next<CR>", "Jump to error below", bufnr)
   end,
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
-  flags = {
-    debounce_text_changes = 150,
-  },
   cmd = {
     "sqls",
     -- "-trace",

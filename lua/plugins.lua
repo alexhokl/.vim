@@ -365,8 +365,8 @@ return {
       })
 
       -- uncomment to enable debug logs
-      -- to view logs use `:lua vim.cmd('e'..vim.lsp.get_log_path())`
-      -- vim.lsp.set_log_level("debug")
+      -- to view logs use `:lua vim.cmd('e'..vim.lsp.log.get_filename())`
+      -- vim.lsp.log.set_level("debug")
 
       local enabled_lsp_clients = {
         "bashls",
