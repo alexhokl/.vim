@@ -3,14 +3,8 @@ vim.bo.shiftwidth = 4
 vim.bo.softtabstop = 4
 vim.bo.expandtab = true
 
--- set colourcolumn for cs files on file open
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*.cs",
-  callback = function()
-    vim.opt_local.colorcolumn = "100"
-    vim.opt_local.textwidth = 100
-  end,
-})
+vim.opt_local.colorcolumn = "100"
+vim.opt_local.textwidth = 100
 
 -- set errorformat for parsing output from dotnet build
 vim.opt.errorformat = '%f(%l\\,%c):%m'
