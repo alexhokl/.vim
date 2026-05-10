@@ -35,7 +35,14 @@ return {
   {
     "nanotee/sqls.nvim",
     ft = { "sql", "mysql", "plsql" },
-    opts = {},
+    config = function()
+      local ok, sqls = pcall(require, "sqls")
+      if not ok then
+        vim.notify("Failed to load sqls.nvim: " .. sqls, vim.log.levels.ERROR)
+        return
+      end
+      sqls.setup({})
+    end,
     keys = {
       { "<leader>ds",   "<cmd>SqlsSwitchConnection<CR>",    mode = "n", desc = "Switch database connection (sqls)",    noremap = true, silent = true },
       { "<leader>dd",   "<cmd>SqlsSwitchDatabase<CR>",      mode = "n", desc = "Switch database (sqls)",               noremap = true, silent = true },

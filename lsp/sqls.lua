@@ -1,6 +1,11 @@
 return {
   on_attach = function(client, bufnr)
-    require('sqls').on_attach(client, bufnr)
+    local ok, sqls = pcall(require, "sqls")
+    if not ok then
+      vim.notify("Failed to load sqls.nvim: " .. sqls, vim.log.levels.WARN)
+    else
+      sqls.on_attach(client, bufnr)
+    end
 
     -- Utility function for mapping keys
     local map = function(mode, keys, command, desc, buff)
@@ -18,7 +23,7 @@ return {
   end,
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   cmd = {
-    "sqls",
+    vim.fn.expand("$HOME/git/bin/sqls"),
     -- "-trace",
     -- "-log",
     -- "/tmp/sqls.log",
