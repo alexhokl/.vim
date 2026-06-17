@@ -47,7 +47,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "a683e0ddf0cf64c6cd689e18ffb480ade3c162b7" },
   "nvim-md-header-telescope-picker": { "branch": "master", "commit": "8fff95bdd7139eb28dde545081ed12bc2a0ace4a" },
   "nvim-md-open-link": { "branch": "main", "commit": "4672e4c951d63c019e032633f40d431f7b5e154f" },
-  "nvim-md-toc": { "branch": "main", "commit": "363b9cf22ce1e6ccf60a7cbcb67c79ee9ae00547" },
+  "nvim-md-toc": { "branch": "main", "commit": "d7928633e1dc1656c64e640b8be5adaeff0bd1e5" },
   "nvim-nio": { "branch": "master", "commit": "21f5324bfac14e22ba26553caf69ec76ae8a7662" },
   "nvim-notify": { "branch": "master", "commit": "8701bece920b38ea289b457f902e2ad184131a5d" },
   "nvim-surround": { "branch": "main", "commit": "8b47db616ef658b8fc27e61db2896aa2f40134de" },
