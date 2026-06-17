@@ -93,7 +93,7 @@ return {
 			{
 				"<leader>ft",
 				function()
-					require("nvim-md-header-telescope-picker").markdown_header_picker({})
+					require("nvim-md-header-telescope-picker").markdown_header_picker({ sorting_strategy = "ascending" })
 				end,
 				desc = "Find headers",
 			},
