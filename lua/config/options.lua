@@ -14,6 +14,11 @@ vim.opt.tabstop = 2        -- A tab counts as 2 spaces
 vim.opt.smartindent = true -- Smart indentation on new lines
 vim.opt.autoindent = true  -- Maintain indent of current line on new lines
 
+-- Disable Neovim's bundled markdown ftplugin from forcing 4-space
+-- indentation (tabstop/shiftwidth/softtabstop=4), which otherwise overrides
+-- our own 2-space settings in ftplugin/markdown.lua.
+vim.g.markdown_recommended_style = 0
+
 -- Search Settings
 vim.opt.ignorecase = true -- Case-insensitive search by default...
 vim.opt.smartcase = true  -- ... but case-sensitive if query contains capital letters
