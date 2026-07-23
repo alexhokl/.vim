@@ -1,26 +1,26 @@
 return {
 
-  {
-    "dkarter/bullets.vim",
-    ft = "markdown",
-    init = function()
-      vim.g.bullets_set_mappings = 0
-      vim.g.bullets_auto_indent_after_colon = 0
-    end,
-    config = function()
-      local map = function(mode, keys, command, desc)
-        vim.keymap.set(mode, keys, command, {
-          noremap = true,
-          silent = true,
-          desc = desc,
-          buffer = true,
-        })
-      end
+	{
+		"dkarter/bullets.vim",
+		ft = "markdown",
+		init = function()
+			vim.g.bullets_set_mappings = 0
+			vim.g.bullets_auto_indent_after_colon = 0
+		end,
+		config = function()
+			local map = function(mode, keys, command, desc)
+				vim.keymap.set(mode, keys, command, {
+					noremap = true,
+					silent = true,
+					desc = desc,
+					buffer = true,
+				})
+			end
 
-      map({ "n", "x" }, "<leader>>", "<Plug>(bullets-demote)<cr>", "Increase indent of a bullet")
-      map({ "n", "x" }, "<leader><", "<Plug>(bullets-promote)<cr>", "Decrease indent of a bullet")
-    end,
-  },
+			map({ "n", "x" }, "<leader>>", "<Plug>(bullets-demote)<cr>", "Increase indent of a bullet")
+			map({ "n", "x" }, "<leader><", "<Plug>(bullets-promote)<cr>", "Decrease indent of a bullet")
+		end,
+	},
 
 	{
 		"alexhokl/nvim-md-open-link",
@@ -33,59 +33,59 @@ return {
 		"alexhokl/nvim-md-header-telescope-picker",
 	},
 
-  {
-    "godlygeek/tabular",
-    ft = "markdown",
-    config = function()
-      vim.keymap.set("x", "<leader>t", ":Tabularize /|<CR>", {
-        noremap = true,
-        silent = true,
-        desc = "Format markdown table",
-        buffer = true,
-      })
-    end,
-  },
+	{
+		"godlygeek/tabular",
+		ft = "markdown",
+		config = function()
+			vim.keymap.set("x", "<leader>t", ":Tabularize /|<CR>", {
+				noremap = true,
+				silent = true,
+				desc = "Format markdown table",
+				buffer = true,
+			})
+		end,
+	},
 
-  {
-    "plasticboy/vim-markdown",
-    ft = "markdown",
-    init = function()
-      vim.g.vim_markdown_math = 1
-      vim.g.vim_markdown_new_list_item_indent = 2
-      vim.g.vim_markdown_folding_level = 5
-      vim.g.vim_markdown_fenced_languages = { "csharp=cs" }
-      vim.g.vim_markdown_strikethrough = 1
-      vim.g.vim_markdown_folding_disabled = 0
-      vim.g.vim_markdown_toc_autofit = 1
-      vim.g.vim_markdown_conceal = 0
-      vim.g.vim_markdown_conceal_code_blocks = 0
-      vim.g.vim_markdown_follow_anchor = 1
-      vim.g.vim_markdown_frontmatter = 1
-      vim.g.vim_markdown_toml_frontmatter = 1
-      vim.g.vim_markdown_json_frontmatter = 1
-    end,
-    config = function()
-      vim.keymap.set("n", "<leader>co", function()
-        vim.cmd("normal! I```")
-        vim.cmd("normal! o```")
-        vim.cmd("normal! k")
-        vim.cmd("startinsert!")
-      end, { noremap = true, silent = true, desc = "Insert code block", buffer = true })
+	{
+		"plasticboy/vim-markdown",
+		ft = "markdown",
+		init = function()
+			vim.g.vim_markdown_math = 1
+			vim.g.vim_markdown_new_list_item_indent = 2
+			vim.g.vim_markdown_folding_level = 5
+			vim.g.vim_markdown_fenced_languages = { "csharp=cs" }
+			vim.g.vim_markdown_strikethrough = 1
+			vim.g.vim_markdown_folding_disabled = 0
+			vim.g.vim_markdown_toc_autofit = 1
+			vim.g.vim_markdown_conceal = 0
+			vim.g.vim_markdown_conceal_code_blocks = 0
+			vim.g.vim_markdown_follow_anchor = 1
+			vim.g.vim_markdown_frontmatter = 1
+			vim.g.vim_markdown_toml_frontmatter = 1
+			vim.g.vim_markdown_json_frontmatter = 1
+		end,
+		config = function()
+			vim.keymap.set("n", "<leader>co", function()
+				vim.cmd("normal! I```")
+				vim.cmd("normal! o```")
+				vim.cmd("normal! k")
+				vim.cmd("startinsert!")
+			end, { noremap = true, silent = true, desc = "Insert code block", buffer = true })
 
-      vim.keymap.set("x", "<leader>co", function()
-        vim.cmd("normal! dO```")
-        vim.cmd("normal! o```")
-        vim.cmd("normal! Pk")
-        vim.cmd("startinsert!")
-      end, { noremap = true, silent = true, desc = "Wrap in code block", buffer = true })
+			vim.keymap.set("x", "<leader>co", function()
+				vim.cmd("normal! dO```")
+				vim.cmd("normal! o```")
+				vim.cmd("normal! Pk")
+				vim.cmd("startinsert!")
+			end, { noremap = true, silent = true, desc = "Wrap in code block", buffer = true })
 
-      vim.keymap.set("n", "<leader>k", function()
-        vim.cmd("normal! i<kbd>")
-        vim.cmd("normal! la</kbd>")
-        vim.cmd("normal! l")
-      end, { noremap = true, silent = true, desc = "Insert markdown of kbd", buffer = true })
-    end,
-  },
+			vim.keymap.set("n", "<leader>k", function()
+				vim.cmd("normal! i<kbd>")
+				vim.cmd("normal! la</kbd>")
+				vim.cmd("normal! l")
+			end, { noremap = true, silent = true, desc = "Insert markdown of kbd", buffer = true })
+		end,
+	},
 
 	{
 		"alexhokl/nvim-md-toc",
@@ -132,7 +132,13 @@ return {
 	},
 
 	{
-		"alexhokl/nvim-header-formatter",
+		"alexhokl/nvim-md-header-formatter",
+		ft = "markdown",
+		opts = {},
+	},
+
+	{
+		"alexhokl/nvim-md-header-jumper",
 		ft = "markdown",
 		opts = {},
 	},
