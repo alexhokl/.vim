@@ -1,37 +1,40 @@
 -- lua/config/md_reflow.lua
--- Reflow markdown bullet lists like `gq`, then strip bullet prefixes
--- from wrapped continuation lines (each item keeps its bullet on its
--- first line only).
+-- Reflow markdown bullet and numbered lists like `gq`, then strip
+-- list prefixes from wrapped continuation lines (each item keeps its
+-- marker on its first line only; numbers are preserved as written).
 local M = {}
 
 local BULLET_PREFIX = "^(%s*[-*+]%s+)"
+local ORDERED_PREFIX = "^(%s*%d+[%.%)]%s+)"
 
 local function is_blank(line)
 	return line:match("^%s*$") ~= nil
 end
 
-local function bullet_prefix(line)
-	return line:match(BULLET_PREFIX)
+local function list_prefix(line)
+	return line:match(BULLET_PREFIX) or line:match(ORDERED_PREFIX)
 end
 
 local function rtrim(s)
 	return (s:gsub("%s+$", ""))
 end
 
--- Remove any leading whitespace and optional bullet marker.
+-- Remove any leading whitespace and optional list marker.
 local function strip_leader(line)
-	return (line:gsub("^%s*[-*+]?%s*", "", 1))
+	line = (line:gsub("^%s*[-*+]?%s*", "", 1))
+	return (line:gsub("^%s*%d+[%.%)]%s+", "", 1))
 end
 
---- Split the range into segments: a bullet line starts a segment and
---- following non-blank, non-bullet lines attach to it as continuations.
---- Blank lines break segments and are never reflowed. Lines before the
---- first bullet form plain (no-strip) segments.
+--- Split the range into segments: a list line (bullet or numbered)
+--- starts a segment and following non-blank, non-list lines attach
+--- to it as continuations. Blank lines break segments and are never
+--- reflowed. Lines before the first list marker form plain (no-strip)
+--- segments.
 local function build_segments(lines)
 	local segments = {}
 	local cur = nil
 	for idx, line in ipairs(lines) do
-		local prefix = bullet_prefix(line)
+		local prefix = list_prefix(line)
 		if prefix ~= nil then
 			cur = { start = idx, finish = idx, prefix = prefix }
 			segments[#segments + 1] = cur
@@ -82,7 +85,7 @@ local function join_segment(lines, prefix, indent)
 end
 
 --- Reflow one segment [start_line, end_line]: join it to a single line,
---- reflow that line with the built-in `gq`, then replace the bullet
+--- reflow that line with the built-in `gq`, then replace the list
 --- prefix of every wrapped continuation line with an equal-width run of
 --- spaces (hanging indent). Plain segments keep their indent, no strip.
 local function format_segment(state, start_line, end_line, prefix)
@@ -169,7 +172,7 @@ local function format_range_impl(start_line, end_line)
 	vim.fn.setpos(".", saved_cursor)
 end
 
---- Reflow and strip bullet prefixes in [start_line, end_line].
+--- Reflow and strip list prefixes in [start_line, end_line].
 function M.format_range(start_line, end_line)
 	local ok, err = pcall(format_range_impl, start_line, end_line)
 	if not ok then
