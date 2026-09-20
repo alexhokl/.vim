@@ -383,6 +383,16 @@ return {
 				"zls",
 			}
 
+			-- Override nvim-lspconfig defaults for sqls with custom config.
+			-- lspconfig sets root_markers = { "config.yml" } which prevents
+			-- the client from attaching when no config.yml is in the project
+			-- tree. Use .git as the root marker and the full binary path.
+			vim.lsp.config("sqls", {
+				cmd = { vim.fn.expand("$HOME/git/bin/sqls") },
+				filetypes = { "sql", "mysql", "plsql" },
+				root_markers = { ".git" },
+			})
+
 			-- enable LSP clients
 			vim.lsp.enable(enabled_lsp_clients)
 		end,

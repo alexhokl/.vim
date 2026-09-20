@@ -1,55 +1,58 @@
 return {
 
-  {
-    "kristijanhusak/vim-dadbod-ui",
-    dependencies = {
-      { 'tpope/vim-dadbod',                     lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
-    },
-    keys = {
-      { "<leader>dbed", ":e ~/.local/share/db_ui/connections.json", desc = "Edit database connection file (dadbod)", noremap = true, silent = true },
-      { "<leader>dbc",  ":DBUIToggle<CR>",                          desc = "Toggle DB UI",                           noremap = true, silent = true },
-    },
-    cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
-    },
-    init = function()
-      vim.g.db_ui_use_nerd_fonts = 1
-      vim.g.db_ui_table_helpers = {
-        postgresql = {
-          Count = 'SELECT COUNT(*) FROM "{table}"',
-        },
-        sqlserver = {
-          Count = 'SELECT COUNT(*) FROM "{table}"',
-        },
-        sqlite = {
-          Count = 'SELECT COUNT(*) FROM "{table}"',
-        },
-      }
-    end,
-  },
+	{
+		"kristijanhusak/vim-dadbod-ui",
+		dependencies = {
+			{ "tpope/vim-dadbod", lazy = true },
+			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
+		},
+		keys = {
+			{
+				"<leader>dbed",
+				":e ~/.local/share/db_ui/connections.json",
+				desc = "Edit database connection file (dadbod)",
+				noremap = true,
+				silent = true,
+			},
+			{
+				"<leader>dbc",
+				":DBUIToggle<CR>",
+				desc = "Toggle DB UI",
+				noremap = true,
+				silent = true,
+			},
+		},
+		cmd = {
+			"DBUI",
+			"DBUIToggle",
+			"DBUIAddConnection",
+			"DBUIFindBuffer",
+		},
+		init = function()
+			vim.g.db_ui_use_nerd_fonts = 1
+			vim.g.db_ui_table_helpers = {
+				postgresql = {
+					Count = 'SELECT COUNT(*) FROM "{table}"',
+				},
+				sqlserver = {
+					Count = 'SELECT COUNT(*) FROM "{table}"',
+				},
+				sqlite = {
+					Count = 'SELECT COUNT(*) FROM "{table}"',
+				},
+			}
+		end,
+	},
 
-  {
-    "nanotee/sqls.nvim",
-    ft = { "sql", "mysql", "plsql" },
-    config = function()
-      local ok, sqls = pcall(require, "sqls")
-      if not ok then
-        vim.notify("Failed to load sqls.nvim: " .. sqls, vim.log.levels.ERROR)
-        return
-      end
-      sqls.setup({})
-    end,
-    keys = {
-      { "<leader>ds",   "<cmd>SqlsSwitchConnection<CR>",    mode = "n", desc = "Switch database connection (sqls)",    noremap = true, silent = true },
-      { "<leader>dd",   "<cmd>SqlsSwitchDatabase<CR>",      mode = "n", desc = "Switch database (sqls)",               noremap = true, silent = true },
-      { "<F5>",         "<cmd>SqlsExecuteQuery<CR>",        mode = "n", desc = "Execute query (sqls)",                 noremap = true, silent = true },
-      { "<F5>",         "<cmd>SqlsExecuteQuery<CR>",        mode = "x", desc = "Execute query (sqls)",                 noremap = true, silent = true },
-      { "<leader>dbes", ":e ~/.config/sqls/config.yml<CR>", mode = "n", desc = "Edit database connection file (sqls)", noremap = true, silent = true },
-    },
-  },
-
+	{
+		"nanotee/sqls.nvim",
+		ft = { "sql", "mysql", "plsql" },
+		keys = {
+			{ "<leader>ds", "<cmd>SqlsSwitchConnection<CR>", mode = "n", desc = "Switch database connection (sqls)", noremap = true, silent = true },
+			{ "<leader>dd", "<cmd>SqlsSwitchDatabase<CR>", mode = "n", desc = "Switch database (sqls)", noremap = true, silent = true },
+			{ "<F5>", "<cmd>SqlsExecuteQuery<CR>", mode = "n", desc = "Execute query (sqls)", noremap = true, silent = true },
+			{ "<F5>", "<cmd>SqlsExecuteQuery<CR>", mode = "x", desc = "Execute query (sqls)", noremap = true, silent = true },
+			{ "<leader>dbes", ":e ~/.config/sqls/config.yml<CR>", mode = "n", desc = "Edit database connection file (sqls)", noremap = true, silent = true },
+		},
+	},
 }
