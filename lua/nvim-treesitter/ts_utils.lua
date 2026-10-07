@@ -12,7 +12,12 @@ local M = {}
 ---@return TSNode|nil
 function M.get_node_at_cursor()
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-  vim.treesitter.get_parser(0):parse({ row - 1, col, row - 1, col })
+  -- Neovim 0.12: get_parser() returns nil instead of throwing when it fails
+  local parser = vim.treesitter.get_parser(0)
+  if not parser then
+    return nil
+  end
+  parser:parse({ row - 1, col, row - 1, col })
   return vim.treesitter.get_node({ pos = { row - 1, col } })
 end
 
