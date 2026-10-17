@@ -25,6 +25,7 @@ return {
 				"gopls",
 				"html-lsp",
 				"json-lsp",
+				"kotlin-lsp",
 				"lua-language-server",
 				"ocaml-lsp",
 				"powershell-editor-services",
