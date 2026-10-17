@@ -91,6 +91,7 @@
         typescript
         typescript-language-server
         yamlfmt
+        yq-go # required by mason file: registries
       ];
 
       programs.neovim = {

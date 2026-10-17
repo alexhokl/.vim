@@ -4,6 +4,9 @@ return {
 		"mason-org/mason.nvim",
 		opts = {
 			registries = {
+				-- temporary: kotlin-lsp download URL fix until
+				-- mason-org/mason-registry#17323 is merged
+				"file:" .. vim.fn.stdpath("config") .. "/mason-registry",
 				"github:mason-org/mason-registry",
 				"github:Crashdummyy/mason-registry",
 			},
