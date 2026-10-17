@@ -369,6 +369,7 @@ return {
 				"gopls",
 				"html",
 				"jsonls",
+				"kotlin_lsp",
 				"ocamllsp",
 				"powershell_es",
 				"pyright",
