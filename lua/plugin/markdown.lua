@@ -131,6 +131,19 @@ return {
 	},
 
 	{
+		"alexhokl/nvim-jmdict",
+		ft = "markdown",
+		opts = {
+			-- falls back to the plugin default when unset
+			dictionary_path = vim.env.JMDICT_JSON,
+			normal_mode_keymap = "<leader>jo",
+			visual_mode_keymap = "<leader>jo",
+			insert_format = " - %s",
+			gloss_separator = ";",
+		},
+	},
+
+	{
 		"alexhokl/nvim-md-header-formatter",
 		ft = "markdown",
 		opts = {},
