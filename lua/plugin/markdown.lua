@@ -158,6 +158,6 @@ return {
 	{
 		"alexhokl/nvim-md-list-reflow",
 		ft = "markdown",
-		opts = {},
+		opts = { override_gq = true },
 	},
 }

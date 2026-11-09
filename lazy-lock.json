@@ -47,7 +47,7 @@
   "nvim-md-header-formatter": { "branch": "main", "commit": "8373864e558d3bb142dd74eaf49560eb03b647ea" },
   "nvim-md-header-jumper": { "branch": "main", "commit": "eb3fe0066f9fe49c9ab2a3ddc45ff715b2eb1788" },
   "nvim-md-header-telescope-picker": { "branch": "master", "commit": "8fff95bdd7139eb28dde545081ed12bc2a0ace4a" },
-  "nvim-md-list-reflow": { "branch": "main", "commit": "5e97bb5b203dbcd544d8dadd13cb6d3162ff83c9" },
+  "nvim-md-list-reflow": { "branch": "main", "commit": "acc7455918920cfa3aa4fb6cbe2749bd2ade3e93" },
   "nvim-md-open-link": { "branch": "main", "commit": "d034238238901cc41fbcdc3adea417e4d1a967e3" },
   "nvim-md-toc": { "branch": "main", "commit": "d7928633e1dc1656c64e640b8be5adaeff0bd1e5" },
   "nvim-nio": { "branch": "master", "commit": "edcc181a875301dd21840189aa2f2f9ad69fc172" },
