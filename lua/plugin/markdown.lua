@@ -154,4 +154,10 @@ return {
 		ft = "markdown",
 		opts = {},
 	},
+
+	{
+		"alexhokl/nvim-md-list-reflow",
+		ft = "markdown",
+		opts = {},
+	},
 }
