@@ -1,6 +1,5 @@
 -- cmd, filetypes and root_markers are inherited from nvim-lspconfig;
--- install the server with `:MasonInstall kotlin-lsp` (provides intellij-server);
--- the package is overridden in mason-registry/ to fix its download URLs
+-- install the server with `:MasonInstall kotlin-lsp` (provides intellij-server)
 return {
   on_attach = function(client, bufnr)
     -- Utility function for mapping keys
