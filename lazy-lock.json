@@ -49,7 +49,7 @@
   "nvim-md-header-telescope-picker": { "branch": "master", "commit": "8fff95bdd7139eb28dde545081ed12bc2a0ace4a" },
   "nvim-md-list-reflow": { "branch": "main", "commit": "70fc3df7b48d68043dc00af46add7c98f150a97e" },
   "nvim-md-open-link": { "branch": "main", "commit": "c55895fbbdb0121515e690a0174f2e737be70487" },
-  "nvim-md-toc": { "branch": "main", "commit": "d7928633e1dc1656c64e640b8be5adaeff0bd1e5" },
+  "nvim-md-toc": { "branch": "main", "commit": "bc6e67cc1e930094726eb244915e80ec11c4a1d6" },
   "nvim-nio": { "branch": "master", "commit": "edcc181a875301dd21840189aa2f2f9ad69fc172" },
   "nvim-notify": { "branch": "master", "commit": "8701bece920b38ea289b457f902e2ad184131a5d" },
   "nvim-surround": { "branch": "main", "commit": "8b47db616ef658b8fc27e61db2896aa2f40134de" },
